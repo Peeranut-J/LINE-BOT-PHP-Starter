@@ -9,17 +9,17 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+		// Reply only when message sent is in 'text' format -- test to image
+		if ($event['type'] == 'message' && $event['message']['type'] == 'image') {
 			// Get text sent
-			$text = $event['message']['text'];
+			$image = $event['message']['image'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
 			$messages = [
-				'type' => 'text',
-				'text' => $text
+				'type' => 'image',
+				'text' => $image
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -44,4 +44,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK";
+echo "OK--test image";
