@@ -22,17 +22,17 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => 'เป็นโรค'
 			];
-			} else if('text' == 'ขอรับ link กรอกข้อมูล') {
+			} else if($text == 'ขอรับ link กรอกข้อมูล') {
 			$messages = [
 				'type' => 'text',
 				'text' => 'https://goo.gl/forms/LeQgHX7Kuv6s6Plx1'
 			];
-			} else if('text' == 'โรงพยาบาลที่เกี่ยวข้อง') {
+			} else if($text == 'โรงพยาบาลที่เกี่ยวข้อง') {
 			$messages = [
 				'type' => 'text',
 				'text' => 'โรงพยาบาล A เบอร์ติดต่อ 02-000-0000 /n โรงพยาบาล B เบอร์ติดต่อ 02-111-1111'
 			];
-			} else if('text' == 'ปัจจัยเสี่ยงของต้อหิน') {
+			} else if($text == 'ปัจจัยเสี่ยงของต้อหิน') {
 			$messages = [
 				'type' => 'text',
 				'text' => 'coming soon'
