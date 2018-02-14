@@ -37,6 +37,12 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => 'coming soon'
 			];
+			} else {
+			$messages = [
+				'type' => 'text',
+				'text' => 'หากมีคำถาม หรือต้องการใช้บริการอะไร กรุณากดปุ่มใน bulletin หรือหากต้องการตรวจต้อหินเบื้องต้น กรุณาส่งรูปภาพ ขอบคุณครับ'
+			];
+			}
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
