@@ -17,17 +17,12 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			if('type' == 'image'){
-			$messages = [
-				'type' => 'text',
-				'text' => 'เป็นโรค'
-			];
-			} else if($text == 'ขอรับ link กรอกข้อมูล') {
+			if($text == 'ขอรับ link กรอกข้อมูล') {
 			$messages = [
 				'type' => 'text',
 				'text' => 'https://goo.gl/forms/LeQgHX7Kuv6s6Plx1'
 			];
-			} else if($text == 'โรงพยาบาลที่เกี่ยวข้อง') {
+			} else if($text == 'ขอรายชื่อโรงพยาบาลที่เกี่ยวข้อง') {
 			$messages = [
 				'type' => 'text',
 				'text' => 'โรงพยาบาล A เบอร์ติดต่อ 02-000-0000 /n โรงพยาบาล B เบอร์ติดต่อ 02-111-1111'
@@ -36,6 +31,51 @@ if (!is_null($events['events'])) {
 			$messages = [
 				'type' => 'text',
 				'text' => 'coming soon'
+			];
+			} 
+			 else if($text == 'coming soon...') {
+			$messages = [
+				'type' => 'text',
+				'text' => 'coming soon'
+			];
+			} else {
+			$messages = [
+				'type' => 'text',
+				'text' => 'หากมีคำถาม หรือต้องการใช้บริการอะไร กรุณากดปุ่มใน bulletin หรือหากต้องการตรวจต้อหินเบื้องต้น กรุณาส่งรูปภาพ ขอบคุณครับ'
+			];
+			}
+
+			// Make a POST Request to Messaging API to reply to sender
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+
+			echo $result . "\r\n";
+		}
+		else if ($event['type'] == 'message' && $event['message']['type'] == 'image') {
+			// Get text sent
+			$image = $event['message']['image'];
+			// Get replyToken
+			$replyToken = $event['replyToken'];
+
+			// Build message to reply back
+			if('type' == 'image'){
+			$messages = [
+				'type' => 'text',
+				'text' => 'เป็นโรค'
 			];
 			} else {
 			$messages = [
