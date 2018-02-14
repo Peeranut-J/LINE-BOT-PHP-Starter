@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $access_token = 'vJdzjrUAxybexlcIhApBv8hS0XZHICcF7poHIcSGaVGgHK4/xiYkWs1FCyl9LQRy3Mwh9MIwmvZg/n/0pRxDZLDsCES76NChzi3eAeEhiP0HczzHv/L2SI6eInqZeSkr68e/zwRVeuwD8EGY5d2yfQdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -17,9 +17,25 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
+			if('type' == 'image'){
 			$messages = [
 				'type' => 'text',
-				'text' => $text
+				'text' => 'เป็นโรค'
+			];
+			} else if('text' == 'ขอรับ link กรอกข้อมูล') {
+			$messages = [
+				'type' => 'text',
+				'text' => 'https://goo.gl/forms/LeQgHX7Kuv6s6Plx1'
+			];
+			} else if('text' == 'โรงพยาบาลที่เกี่ยวข้อง') {
+			$messages = [
+				'type' => 'text',
+				'text' => 'โรงพยาบาล A เบอร์ติดต่อ 02-000-0000 /n โรงพยาบาล B เบอร์ติดต่อ 02-111-1111'
+			];
+			} else if('text' == 'ปัจจัยเสี่ยงของต้อหิน') {
+			$messages = [
+				'type' => 'text',
+				'text' => 'coming soon'
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
