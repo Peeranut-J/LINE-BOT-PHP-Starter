@@ -52,7 +52,7 @@ if (!is_null($events['events'])) {
 			if($text == 'ร้องขอการลงทะเบียน') {
 			$messages = [
 				'type' => 'text',
-				'text' => '-ลงทะเบียน-'
+				'text' => 'https://drive.google.com/open?id=1tfhaVVDmL4Agk04KS0BLFDl9yma7_ufEIPLhgn1gnIg'
 			];
 			} else if($text == 'ขอรับlinkกรอกข้อมูลอาการ') {
 			$messages = [
