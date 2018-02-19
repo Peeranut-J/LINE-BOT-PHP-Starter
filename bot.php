@@ -49,20 +49,10 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			if($text == 'ร้องขอการลงทะเบียน') {
+			if($text == 'ขอรับ link กรอกข้อมูล') {
 			$messages = [
 				'type' => 'text',
-				'text' => '-ลงทะเบียน-'
-			];
-			else if($text == 'ขอรับlinkกรอกข้อมูลอาการ') {
-			$messages = [
-				'type' => 'text',
-				'text' => '-กรอกข้อมูลอาการ-'
-			];
-			else if($text == 'ขอดูผลการวินิจฉัย') {
-			$messages = [
-				'type' => 'text',
-				'text' => '-ผลการวินิจฉัย-'
+				'text' => 'https://goo.gl/forms/LeQgHX7Kuv6s6Plx1'
 			];
 			} else if($text == 'ขอรายชื่อโรงพยาบาลที่เกี่ยวข้อง') {
 			$messages = [
