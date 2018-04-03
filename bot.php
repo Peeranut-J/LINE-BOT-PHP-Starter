@@ -23,8 +23,8 @@ if (!is_null($events['events'])) {
 			//curl -v -X GET https://api.line.me/v2/bot/message/$imageId/content \
 			//-H 'Authorization: Bearer $access_token'
 
-			$img = './white.jpg';
-			$im = imagecreatefrompng('./white.jpg');
+			$img = 'white.jpg';
+			//$im = imagecreatefrompng('./white.jpg');
 			header('Content-Type: image/jpeg');
 			readfile($img);
 			$colors   = Array();
@@ -34,7 +34,15 @@ if (!is_null($events['events'])) {
 			$colors[] = imagecolorexact($img, 100, 255, 52);
 
 			print_r($colors);
-
+			/*
+			$ch = curl_init('http://example.com/image.php');
+			$fp = fopen('/my/folder/flower.gif', 'wb');
+			curl_setopt($ch, CURLOPT_FILE, $fp);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_exec($ch);
+			curl_close($ch);
+			fclose($fp);
+			*/
 
 			// Build message to reply back
 			$messages = [
