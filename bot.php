@@ -5,17 +5,36 @@ $access_token = 'vJdzjrUAxybexlcIhApBv8hS0XZHICcF7poHIcSGaVGgHK4/xiYkWs1FCyl9LQR
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+
+
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'image') {
 			// Get text sent
-			$image = $event['message']['image'];
+			//$image = $event['message']['image'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			//$imageId = $event
+			$imageId = $event['message']['id'];
+
+			//curl -v -X GET https://api.line.me/v2/bot/message/$imageId/content \
+			//-H 'Authorization: Bearer $access_token'
+
+			$img = './white.jpg';
+			$im = imagecreatefrompng('./white.jpg');
+			header('Content-Type: image/jpeg');
+			readfile($img);
+			$colors   = Array();
+			$colors[] = imagecolorexact($img, 255, 0, 0);
+			$colors[] = imagecolorexact($img, 0, 0, 0);
+			$colors[] = imagecolorexact($img, 255, 255, 255);
+			$colors[] = imagecolorexact($img, 100, 255, 52);
+
+			print_r($colors);
+
 
 			// Build message to reply back
 			$messages = [
@@ -27,8 +46,8 @@ if (!is_null($events['events'])) {
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				//'messages' => [$messages],
-				'messages' => [$image],
+				'messages' => [$messages],
+				//'messages' => [$image],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
