@@ -61,8 +61,8 @@ if (!is_null($events['events'])) {
 				$talk = 'no';
 			}*/
 			
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-			$urlIm = 'https://api.line.me/v2/bot/message/' + $imageId + '/content' ;
+			/*$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$urlIm = 'https://api.line.me/v2/bot/message/' + $imageId + '/content' ;*/
 		/*	$ch = curl_init($urlIm);
 			$fp = fopen('/my/folder/flower.gif', 'wb');
 			curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -73,6 +73,8 @@ if (!is_null($events['events'])) {
 			fclose($fp);
 			*/
 		//	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$urlIm = 'https://api.line.me/v2/bot/message/' + $imageId + '/content';
 			$ch = curl_init ($urlIm);
 			//curl_setopt($ch, CURLOPT_HEADER, 0);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -80,6 +82,7 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			$img=curl_exec($ch);
+			echo curl_error($ch);
 			curl_close ($ch);
 			/*$fp = fopen($img,'x');
 			fwrite($fp, $raw);
