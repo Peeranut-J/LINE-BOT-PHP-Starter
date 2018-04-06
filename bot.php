@@ -89,8 +89,8 @@ if (!is_null($events['events'])) {
 			fwrite($fp, $raw);
 			fclose($fp);*/
 
-			if(!empty($img)){
-				$talk = 'yeahhhhhh';
+			if(empty($img)){
+				$talk = 'no pic';
 			} else {
 				$talk = $imageId;
 			}
