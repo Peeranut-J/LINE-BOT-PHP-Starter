@@ -80,6 +80,12 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			$img=curl_exec($ch);
 			curl_close ($ch);
+
+			if(imagecolorexact($img, 255, 0, 0) > 0){
+				$talk = 'yeahhhhhh';
+			} else {
+				$talk = $imageId;
+			}
 			/*if(file_exists($saveto)){
 				unlink($saveto);
 			}
@@ -100,8 +106,8 @@ if (!is_null($events['events'])) {
 			$messages = [
 				'type' => 'text',
 				//'text' => $text
-				'text' => $imageId
-				//'text' => $talk
+				//'text' => $imageId
+				'text' => $talk
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
