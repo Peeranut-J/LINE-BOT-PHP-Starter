@@ -81,7 +81,7 @@ if (!is_null($events['events'])) {
 			$img=curl_exec($ch);
 			curl_close ($ch);
 
-			if(imagecolorexact($img, 255, 0, 0) > 0){
+			if(!empty($img)){
 				$talk = 'yeahhhhhh';
 			} else {
 				$talk = $imageId;
