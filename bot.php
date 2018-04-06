@@ -6,7 +6,20 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-
+/*function grab_image($url){
+    $ch = curl_init ($url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+    $raw=curl_exec($ch);
+    curl_close ($ch);
+    if(file_exists($saveto)){
+        unlink($saveto);
+    }
+    $fp = fopen($saveto,'x');
+    fwrite($fp, $raw);
+    fclose($fp);
+}*/
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -35,7 +48,7 @@ if (!is_null($events['events'])) {
 
 			print_r($colors);
 			*/
-			$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
+		/*	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 			$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '4abf1bc163c4ae75b6c4e365d0510dd7']);
 			$response = $bot->getMessageContent($message_id);
 			if ($response->isSucceeded()) {
@@ -46,17 +59,33 @@ if (!is_null($events['events'])) {
 			} else {
 				//error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
 				$talk = 'no';
-			}
-			/*
-			$ch = curl_init('https://api.line.me/v2/bot/message/' + $imageId + '/content');
+			}*/
+			
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$urlIm = 'https://api.line.me/v2/bot/message/' + $imageId + '/content' ;
+		/*	$ch = curl_init($urlIm);
 			$fp = fopen('/my/folder/flower.gif', 'wb');
 			curl_setopt($ch, CURLOPT_FILE, $fp);
-			curl_setopt($ch, CURLOPT_HEADER, 0);
+			//curl_setopt($ch, CURLOPT_HEADER, 0);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			curl_exec($ch);
 			curl_close($ch);
+			fclose($fp);
+			*/
+		//	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$ch = curl_init ($urlIm);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			$img=curl_exec($ch);
+			curl_close ($ch);
+			/*if(file_exists($saveto)){
+				unlink($saveto);
+			}
+			$fp = fopen($saveto,'x');
+			fwrite($fp, $raw);
 			fclose($fp);*/
-			
 			/*$url = 'https://api.line.me/v2/bot/message/' + $imageId + '/content';
 			$img;
 			file_put_contents($img, file_get_contents($url));
@@ -71,8 +100,8 @@ if (!is_null($events['events'])) {
 			$messages = [
 				'type' => 'text',
 				//'text' => $text
-				//'text' => $imageId
-				'text' => $talk
+				'text' => $imageId
+				//'text' => $talk
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
