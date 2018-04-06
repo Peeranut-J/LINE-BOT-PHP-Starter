@@ -42,8 +42,10 @@ if (!is_null($events['events'])) {
 				$tempfile = tmpfile();
 				fwrite($tempfile, $response->getRawBody());
 				$text = sys_get_temp_dir();
+				$talk = 'yes';
 			} else {
-				error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
+				//error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
+				$talk = 'no';
 			}
 			/*
 			$ch = curl_init('https://api.line.me/v2/bot/message/' + $imageId + '/content');
@@ -69,7 +71,8 @@ if (!is_null($events['events'])) {
 			$messages = [
 				'type' => 'text',
 				//'text' => $text
-				'text' => $imageId
+				//'text' => $imageId
+				'text' => $talk
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
