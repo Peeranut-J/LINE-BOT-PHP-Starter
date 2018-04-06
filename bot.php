@@ -75,7 +75,7 @@ if (!is_null($events['events'])) {
 		//	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 	/*		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 			$urlIm = 'https://api.line.me/v2/bot/message/' + $imageId + '/content';							*/
-			$utlIm = 'https://image.ibb.co/dj8SSH/DE233625_7299_48_CD_897_D_44_A987166_BA0.jpg';
+			$urlIm = 'https://image.ibb.co/dj8SSH/DE233625_7299_48_CD_897_D_44_A987166_BA0.jpg';
 			$ch = curl_init ($urlIm);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
