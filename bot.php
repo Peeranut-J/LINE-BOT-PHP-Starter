@@ -44,7 +44,7 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 			fclose($fp);
 			*/
-			$url = 'https://api.line.me/v2/bot/message/' + $imageId + '/content';
+			/*$url = 'https://api.line.me/v2/bot/message/' + $imageId + '/content';
 			$img;
 			file_put_contents($img, file_get_contents($url));
 			if(imagecolorexact($img, 255, 0, 0) > 0){
@@ -53,11 +53,11 @@ if (!is_null($events['events'])) {
 				'text' => 'Hello'
 			];
 			}
-
+*/
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => 'เป็นโรค'
+				'text' => $imageId
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
