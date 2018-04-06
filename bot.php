@@ -73,14 +73,15 @@ if (!is_null($events['events'])) {
 			fclose($fp);
 			*/
 		//	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-			$urlIm = 'https://api.line.me/v2/bot/message/' + $imageId + '/content';
+	/*		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$urlIm = 'https://api.line.me/v2/bot/message/' + $imageId + '/content';							*/
+			$utlIm = 'https://ibb.co/gx2Xux';
 			$ch = curl_init ($urlIm);
-			//curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_BINARYTRANSFER,true);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	//		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			$img=curl_exec($ch);
 			echo curl_error($ch);
 			curl_close ($ch);
