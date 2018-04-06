@@ -82,7 +82,7 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			$img=curl_exec($ch);
-			echo curl_error($ch);
+			//echo curl_error($ch);
 			curl_close ($ch);
 			/*$fp = fopen($img,'x');
 			fwrite($fp, $raw);
