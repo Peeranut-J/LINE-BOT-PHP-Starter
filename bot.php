@@ -106,7 +106,7 @@ if (!is_null($events['events'])) {
 					$count++;
 				}
 			}
-			$talk = (string)$count;
+			//$talk = (string)$count;
 /*
 			header("Content-Type: image/jpeg");
 
