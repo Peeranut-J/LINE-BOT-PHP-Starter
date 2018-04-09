@@ -96,8 +96,8 @@ if (!is_null($events['events'])) {
 				$talk = $imageId;
 			}
 
-			$width = imagesx($img);
-			$height = imagesy($img);
+			//$width = imagesx($img);
+			//$height = imagesy($img);
 			/*$count = 0;
 			for($x = 0; $x < $width; $x++) {
 				for($y = 0; $y < $height; $y++) {
@@ -107,6 +107,8 @@ if (!is_null($events['events'])) {
 				}
 			}*/
 			//$talk = (string)$count;
+
+
 /*
 			header("Content-Type: image/jpeg");
 
