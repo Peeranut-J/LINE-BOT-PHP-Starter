@@ -98,14 +98,14 @@ if (!is_null($events['events'])) {
 
 			$width = imagesx($img);
 			$height = imagesy($img);
-			$count = 0;
+			/*$count = 0;
 			for($x = 0; $x < $width; $x++) {
 				for($y = 0; $y < $height; $y++) {
 				// pixel color at (x, y)
 					$color = imagecolorat($img, $x, $y);
 					$count++;
 				}
-			}
+			}*/
 			//$talk = (string)$count;
 /*
 			header("Content-Type: image/jpeg");
