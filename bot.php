@@ -226,7 +226,8 @@ if (!is_null($events['events'])) {
 				//function in range deadEye
 				//function in range .... etc.
 				
-				$img = imagecreatefromjpeg($urlIm);
+				$img = @imagecreatefromjpeg($urlIm);
+			//	$img = @imagecreatefrompng($urlIm);
 				$rgb = imagecolorat($urlIm, $width/2, $height/2);
 				$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
