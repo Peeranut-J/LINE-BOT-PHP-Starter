@@ -21,6 +21,15 @@ $events = json_decode($content, true);
     fclose($fp);
 }*/
 
+function testMakeFunction($one){
+	if($one == 1){
+		$tell = 'yes its work' ;
+	} else {
+		$tell = 'nooooooo' ;
+	}
+	return $tell;
+}
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -196,7 +205,15 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			if($text == 'normal1'){
+			if($text == 'functiontest'){
+				$number = 1;
+				$test1 = testMakeFunction($number);
+				$messages = [
+				'type' => 'text',
+				'text' => $test1
+				];
+			}
+			else if($text == 'normal1'){
 				$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
 				$data = getimagesize($urlIm);
 				$width = $data[0];
