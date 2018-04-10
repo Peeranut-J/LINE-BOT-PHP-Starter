@@ -103,12 +103,13 @@ if (!is_null($events['events'])) {
 				$talk = $imageId;
 			}
 
-			$talk = getimagesize($urlIm);
-			error_log($talk , 0);
-			/*$data = getimagesize($img);
+			//$talk = getimagesize($urlIm);
+			//error_log($talk , 0);
+			$data = getimagesize($urlIm);
 			$width = $data[0];
 			$height = $data[1];
-			$talk = $width . ' ' . $height;*/
+			$talk = $width . ' ' . $height;
+			error_log($talk , 0);
 
 			//$width = imagesx($img);
 			//$height = imagesy($img);
