@@ -227,11 +227,12 @@ if (!is_null($events['events'])) {
 				//function in range .... etc.
 
 				$rgb = imagecolorat($urlIm, $width/2, $height/2);
-				$r = ($rgb >> 16) & 0xFF;
+				/*$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
-				$b = $rgb & 0xFF;
+				$b = $rgb & 0xFF;*/
+				$colors = imagecolorsforindex($urlIm, $rgb);
 
-				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2; 
+				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' ' . $color; 
 				error_log($talk , 0);
 								
 				$messages = [
