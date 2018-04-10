@@ -104,6 +104,7 @@ if (!is_null($events['events'])) {
 			}
 
 			$talk = getimagesize($urlIm);
+			error_log($talk , 0);
 			/*$data = getimagesize($img);
 			$width = $data[0];
 			$height = $data[1];
