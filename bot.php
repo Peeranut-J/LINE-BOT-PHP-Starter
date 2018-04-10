@@ -85,10 +85,9 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			$img=curl_exec($ch);
-
+			//not work
 			//$rescode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
-			$rescode = file_get_contents($ch);
-
+			//$rescode = file_get_contents($ch);
 			echo curl_error($ch);
 			curl_close ($ch);
 			/*$fp = fopen($img,'x');
@@ -100,7 +99,7 @@ if (!is_null($events['events'])) {
 			//error_log("space" , 0);
 			error_log($urlIm , 0);
 			//error_log($ch , 0);
-			error_log($rescode , 0);
+			//error_log($rescode , 0);
 
 			if(empty($img)){
 				$talk = 'no pic';
