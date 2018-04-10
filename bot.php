@@ -231,7 +231,8 @@ if (!is_null($events['events'])) {
 				$g = ($rgb >> 8) & 0xFF;
 				$b = $rgb & 0xFF;*/
 				$colors = imagecolorsforindex($urlIm, $rgb);
-
+				error_log($rgb, 0);
+				error_log($colors, 0);
 				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' ' . $colors[0] . ' ' . $colors[1]; 
 				error_log($talk , 0);
 								
