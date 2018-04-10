@@ -87,7 +87,7 @@ if (!is_null($events['events'])) {
 			$img=curl_exec($ch);
 
 			//$rescode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
-			$rescode = file_get_contents($img);
+			$rescode = file_get_contents($ch);
 
 			echo curl_error($ch);
 			curl_close ($ch);
