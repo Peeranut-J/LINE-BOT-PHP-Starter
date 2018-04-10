@@ -77,6 +77,7 @@ if (!is_null($events['events'])) {
 			$urlIm = 'https://api.line.me/v2/bot/message/' . $imageId . '/content';							
 			//$urlIm = 'https://image.ibb.co/dj8SSH/DE233625_7299_48_CD_897_D_44_A987166_BA0.jpg';
 			 //can't get image fromline so i use image from link, need to do process after algo test monday
+			 //update : can use image from line la
 			$ch = curl_init ($urlIm);
 			//curl_setopt($ch, CURLOPT_HEADER, 0);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
