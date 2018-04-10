@@ -225,12 +225,13 @@ if (!is_null($events['events'])) {
 				//function in range outer
 				//function in range deadEye
 				//function in range .... etc.
-
+				
+				$img = imagecreatefromjpeg($urlIm);
 				$rgb = imagecolorat($urlIm, $width/2, $height/2);
 				$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
 				$b = $rgb & 0xFF;
-				$colors = imagecolorsforindex($urlIm, $rgb);
+				$colors = imagecolorsforindex($img, $rgb);
 				error_log($rgb, 0);
 				error_log($colors, 0);
 				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' ' . $colors[0] . ' ' . $colors[1]; 
