@@ -97,10 +97,12 @@ if (!is_null($events['events'])) {
 				$talk = $imageId;
 			}
 
+			$talk = getimagesize($img);
 			/*$data = getimagesize($img);
 			$width = $data[0];
 			$height = $data[1];
 			$talk = $width . ' ' . $height;*/
+
 			//$width = imagesx($img);
 			//$height = imagesy($img);
 			/*$count = 0;
