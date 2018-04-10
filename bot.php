@@ -192,8 +192,89 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
+			if($text == 'normal1'){
+				$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
+				$data = getimagesize($urlIm);
+				$width = $data[0];
+				$height = $data[1];
+				$talk = $width . ' ' . $height;
+				error_log($talk , 0);
+
+
+
+				$messages = [
+				'type' => 'text',
+				'text' => $talk
+				];
+			
+			}else if($text == 'normal2'){
+				$urlIm = 'https://image.ibb.co/j0sCGc/normal2.jpg';
+				$data = getimagesize($urlIm);
+				$width = $data[0];
+				$height = $data[1];
+				$talk = $width . ' ' . $height;
+				error_log($talk , 0);
+
+				$messages = [
+				'type' => 'text',
+				'text' => $talk
+				];
+			
+			}else if($text == 'normal3'){
+				$urlIm = 'https://image.ibb.co/jNbuUx/normal3.jpg';
+				$data = getimagesize($urlIm);
+				$width = $data[0];
+				$height = $data[1];
+				$talk = $width . ' ' . $height;
+				error_log($talk , 0);
+
+				$messages = [
+				'type' => 'text',
+				'text' => $talk
+				];
+			
+			}else if($text == 'glau1'){
+				$urlIm = 'https://preview.ibb.co/n3i2Gc/glau1.jpg';
+				$data = getimagesize($urlIm);
+				$width = $data[0];
+				$height = $data[1];
+				$talk = $width . ' ' . $height;
+				error_log($talk , 0);
+
+				$messages = [
+				'type' => 'text',
+				'text' => $talk
+				];
+			
+			}else if($text == 'glau2'){
+				$urlIm = 'https://image.ibb.co/n324wc/glau2.jpg';
+				$data = getimagesize($urlIm);
+				$width = $data[0];
+				$height = $data[1];
+				$talk = $width . ' ' . $height;
+				error_log($talk , 0);
+
+				$messages = [
+				'type' => 'text',
+				'text' => $talk
+				];
+			
+			}else if($text == 'glau3'){
+				$urlIm = 'https://preview.ibb.co/kJstpx/glau3.jpg';
+				$data = getimagesize($urlIm);
+				$width = $data[0];
+				$height = $data[1];
+				$talk = $width . ' ' . $height;
+				error_log($talk , 0);
+
+				$messages = [
+				'type' => 'text',
+				'text' => $talk
+				];
+			
+			}
 			// Build message to reply back
-			if($text == 'ร้องขอการลงทะเบียน') {
+			else if($text == 'ร้องขอการลงทะเบียน') {
 			$messages = [
 				'type' => 'text',
 				'text' => 'https://goo.gl/forms/gf1EF2X9kVdCjDR32'
