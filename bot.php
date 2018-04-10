@@ -97,7 +97,7 @@ if (!is_null($events['events'])) {
 				$talk = $imageId;
 			}
 
-			$talk = getimagesize($img);
+			$talk = $img;
 			/*$data = getimagesize($img);
 			$width = $data[0];
 			$height = $data[1];
