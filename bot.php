@@ -91,6 +91,7 @@ if (!is_null($events['events'])) {
 			fwrite($fp, $raw);
 			fclose($fp);*/
 
+			error_log('log : ' . $img , 0);
 			if(empty($img)){
 				$talk = 'no pic';
 			} else {
