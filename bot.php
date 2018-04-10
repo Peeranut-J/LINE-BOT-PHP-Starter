@@ -232,7 +232,7 @@ if (!is_null($events['events'])) {
 				$b = $rgb & 0xFF;*/
 				$colors = imagecolorsforindex($urlIm, $rgb);
 
-				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' ' . $color; 
+				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' ' . $colors[0] . ' ' . $colors[1]; 
 				error_log($talk , 0);
 								
 				$messages = [
