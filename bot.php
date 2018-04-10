@@ -226,7 +226,7 @@ if (!is_null($events['events'])) {
 				//function in range deadEye
 				//function in range .... etc.
 
-				$rgb = imagecolorat($urlIm, 100, 150);
+				$rgb = imagecolorat($urlIm, $width/2, $height/2);
 				$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
 				$b = $rgb & 0xFF;
