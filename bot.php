@@ -73,29 +73,33 @@ if (!is_null($events['events'])) {
 			fclose($fp);
 			*/
 		//	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-	//		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-	//		$urlIm = 'https://api.line.me/v2/bot/message/' . $imageId . '/content';							
-			$urlIm = 'https://image.ibb.co/dj8SSH/DE233625_7299_48_CD_897_D_44_A987166_BA0.jpg';
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$urlIm = 'https://api.line.me/v2/bot/message/' . $imageId . '/content';							
+	//		$urlIm = 'https://image.ibb.co/dj8SSH/DE233625_7299_48_CD_897_D_44_A987166_BA0.jpg';
 			 //can't get image fromline so i use image from link, need to do process after algo test monday
 			 //update : can use image from line la
 			$ch = curl_init ($urlIm);
-			curl_setopt($ch, CURLOPT_HEADER, 0);
+	//		curl_setopt($ch, CURLOPT_HEADER, 0);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_BINARYTRANSFER,true);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	//		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			$img=curl_exec($ch);
+
+			$rescode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+
 			echo curl_error($ch);
 			curl_close ($ch);
 			/*$fp = fopen($img,'x');
 			fwrite($fp, $raw);
 			fclose($fp);*/
 
-			error_log("img + urlIm" , 0);
+			error_log("img + urlIm + rescode" , 0);
 			error_log($img , 0);
 			//error_log("space" , 0);
 			error_log($urlIm , 0);
 			//error_log($ch , 0);
+			error_log($rescode , 0);
 
 			if(empty($img)){
 				$talk = 'no pic';
@@ -106,7 +110,7 @@ if (!is_null($events['events'])) {
 			//$talk = getimagesize($urlIm);
 			//error_log($talk , 0);
 	//		$data = getimagesize($img);
-			$data = getimagesize($urlIm);
+			$data = getimagesize($rescode);
 			$width = $data[0];
 			$height = $data[1];
 			$talk = $width . ' ' . $height;
