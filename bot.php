@@ -231,7 +231,7 @@ if (!is_null($events['events'])) {
 				$g = ($rgb >> 8) & 0xFF;
 				$b = $rgb & 0xFF;
 
-				$talk = $r . ' ' . $g . ' ' . $b ; 
+				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2; 
 				error_log($talk , 0);
 								
 				$messages = [
