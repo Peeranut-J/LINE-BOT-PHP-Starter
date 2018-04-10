@@ -86,7 +86,8 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			$img=curl_exec($ch);
 
-			$rescode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+			//$rescode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+			$rescode = file_get_contents($img);
 
 			echo curl_error($ch);
 			curl_close ($ch);
