@@ -229,7 +229,16 @@ if (!is_null($events['events'])) {
 				//need to make picture from url .jpg
 				header('Content-Type: image/jpeg');
 
-				$img = @imagecreatefromjpeg($urlIm);
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $urlIm); 
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // good edit, thanks!
+				curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1); // also, this seems wise considering output is image.
+				$data = curl_exec($ch);
+				curl_close($ch);
+
+				$img = imagecreatefromstring($data);
+
+			//	$img = @imagecreatefromjpeg($urlIm);
 			//	$img = @imagecreatefrompng($urlIm);
 				$rgb = imagecolorat($urlIm, $width/2, $height/2);
 				$r = ($rgb >> 16) & 0xFF;
