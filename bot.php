@@ -227,16 +227,20 @@ if (!is_null($events['events'])) {
 				//function in range .... etc.
 				
 				//need to make picture from url .jpg
-				header('Content-Type: image/jpeg');
+			//	header('Content-Type: image/jpeg');
 
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $urlIm); 
+				$fp = fopen("example_homepage.jpg", "w");
+				curl_setopt($ch, CURLOPT_FILE, $fp);
+				curl_setopt($ch, CURLOPT_HEADER, 0);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // good edit, thanks!
 				curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1); // also, this seems wise considering output is image.
 				$data = curl_exec($ch);
 				curl_close($ch);
-
-				$img = imagecreatefromstring($data);
+				fclose($fp);
+				$img = imagecreatefromjpeg("example_homepage.jpg");
+			//  img = imagecreatefromstring($data);
 
 			//	$img = @imagecreatefromjpeg($urlIm);
 			//	$img = @imagecreatefrompng($urlIm);
@@ -249,7 +253,7 @@ if (!is_null($events['events'])) {
 				error_log($img, 0);
 				error_log($rgb, 0);
 				error_log($colors, 0);
-				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' ' . $colors[0] . ' ' . $colors[1] . ' ' . $img . ' ' . $rgb; 
+				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' c0 = ' . $colors[0] . ' c1 = ' . $colors[1] . ' img =  ' . $img . ' rgb = ' . $rgb; 
 				error_log($talk , 0);
 				if(empty($rgb)){
 					$talk = 'empty rgb';
