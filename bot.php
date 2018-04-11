@@ -227,9 +227,10 @@ if (!is_null($events['events'])) {
 				//function in range .... etc.
 				
 				//need to make picture from url .jpg
+				header('Content-Type: image/jpeg');
 
-			//	$img = @imagecreatefromjpeg($urlIm);
-				$img = @imagecreatefrompng($urlIm);
+				$img = @imagecreatefromjpeg($urlIm);
+			//	$img = @imagecreatefrompng($urlIm);
 				$rgb = imagecolorat($urlIm, $width/2, $height/2);
 				$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
