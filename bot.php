@@ -240,8 +240,8 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 			//	fclose($fp);
 			//	$img = imagecreatefromjpeg("example_homepage.jpg");
-				$img = imagecreatefromstring($data);
-
+		//		$img = imagecreatefromstring($data);
+				$img = imagecreatefromjpeg($data);
 			//	$img = @imagecreatefromjpeg($urlIm);
 			//	$img = @imagecreatefrompng($urlIm);
 				$rgb = imagecolorat($urlIm, $width/2, $height/2);
