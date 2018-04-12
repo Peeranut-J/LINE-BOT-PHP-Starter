@@ -229,6 +229,8 @@ if (!is_null($events['events'])) {
 				//need to make picture from url .jpg
 				header('Content-Type: image/jpeg');
 				$img = @imagecreatefromjpeg($urlIm);
+				error_log('img00 = ' . $img, 0);
+
 				imagejpeg($img);
 			//	imagedestroy($img);
 
