@@ -94,6 +94,7 @@ function scaleImageFileToBlob($file) {
     ob_end_clean();
 
     return $final_image;
+}
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
