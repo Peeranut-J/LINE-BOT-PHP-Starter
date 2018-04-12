@@ -231,9 +231,9 @@ if (!is_null($events['events'])) {
 				$img = @imagecreatefromjpeg($urlIm);
 				error_log('img00 = ' . $img, 0);
 
-				imagejpeg($img);
+				$test00 =  imagejpeg($img);
 			//	imagedestroy($img);
-
+				error_log('test00 = ' . $test00, 0);
 				error_log('img = ' . $img, 0);
 
 				$ch = curl_init();
