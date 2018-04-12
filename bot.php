@@ -228,6 +228,9 @@ if (!is_null($events['events'])) {
 				
 				//need to make picture from url .jpg
 				header('Content-Type: image/jpeg');
+				$img = @imagecreatefromjpeg($urlIm);
+				imagejpeg($img);
+				imagedestroy($img);
 
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $urlIm); 
@@ -241,7 +244,7 @@ if (!is_null($events['events'])) {
 			//	fclose($fp);
 			//	$img = imagecreatefromjpeg("example_homepage.jpg");
 		//		$img = imagecreatefromstring($data);
-				$img = imagecreatefromjpeg($data);
+			//	$img = imagecreatefromjpeg($data);
 			//	$img = @imagecreatefromjpeg($urlIm);
 			//	$img = @imagecreatefrompng($urlIm);
 				$rgb = imagecolorat($urlIm, $width/2, $height/2);
