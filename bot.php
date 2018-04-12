@@ -256,6 +256,8 @@ if (!is_null($events['events'])) {
 				$g = ($rgb >> 8) & 0xFF;
 				$b = $rgb & 0xFF;
 				$colors = imagecolorsforindex($img, $rgb);
+				error_log($colors, 0);
+				$colors = imagecolorsforindex($test00, $rgb);
 				error_log($urlIm, 0);
 				error_log($img, 0);
 				error_log($rgb, 0);
