@@ -310,9 +310,14 @@ if (!is_null($events['events'])) {
 				header("Content-type: image/jpeg");
 				$rf = readfile($urlIm);
 				error_log('imginfo = ' . $rf, 0);
+				$rgb0 = imagecolorat($rf, $width/2, $height/2);
+				$r0 = ($rgb >> 16) & 0xFF;
+				$g0= ($rgb >> 8) & 0xFF;
+				$b0 = $rgb & 0xFF;
+				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
 
 				//need to make picture from url .jpg
-				header('Content-Type: image/jpeg');
+			//	header('Content-Type: image/jpeg');
 				$img = imagecreatefromjpeg($urlIm);
 				error_log('img00 = ' . $img, 0);
 
