@@ -232,6 +232,8 @@ if (!is_null($events['events'])) {
 				imagejpeg($img);
 			//	imagedestroy($img);
 
+				error_log('img = ' . $img, 0);
+
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $urlIm); 
 			//	$fp = fopen("example_homepage.jpg", "w");
