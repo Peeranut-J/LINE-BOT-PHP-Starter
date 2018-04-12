@@ -287,6 +287,12 @@ if (!is_null($events['events'])) {
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
 
+				header('Content-type: image/jpeg');
+				$getcon = file_get_contents($urlIm);
+				error_log('img from get content = ' . $getcon, 0);
+				$hi5 = scaleImageFileToBlob($getcon);
+				error_log('img from funct -- getcon = ' . $hi5, 0);
+
 				$hi1 = scaleImageFileToBlob($urlIm);
 				error_log('img from funct -- url = ' . $hi1, 0);
 				//function in range inner
