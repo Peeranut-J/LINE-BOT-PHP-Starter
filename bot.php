@@ -305,6 +305,12 @@ if (!is_null($events['events'])) {
 				//function in range deadEye
 				//function in range .... etc.
 				
+				//$remoteImage = "http://www.example.com/gifs/logo.gif";
+				$imginfo = getimagesize($urlIm);
+				header("Content-type: image/jpeg");
+				$rf = readfile($urlIm);
+				error_log('imginfo = ' . $rf, 0);
+
 				//need to make picture from url .jpg
 				header('Content-Type: image/jpeg');
 				$img = imagecreatefromjpeg($urlIm);
