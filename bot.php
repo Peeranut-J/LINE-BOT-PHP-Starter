@@ -299,14 +299,14 @@ if (!is_null($events['events'])) {
 				$img = @imagecreatefromjpeg($urlIm);
 				error_log('img00 = ' . $img, 0);
 
-				$hi3 = scaleImageFileToBlob($data);
+				$hi3 = scaleImageFileToBlob($img);
 				error_log('img from funct -- createimg = ' . $hi3, 0);
 
 				$test00 =  imagejpeg($img);
 			//	imagedestroy($img);
 				error_log('test00 = ' . $test00, 0);
 				error_log('img = ' . $img, 0);
-				$hi4 = scaleImageFileToBlob($data);
+				$hi4 = scaleImageFileToBlob($test00);
 				error_log('img from funct -- test00 = ' . $hi4, 0);
 
 				$ch = curl_init();
