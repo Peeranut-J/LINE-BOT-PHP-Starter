@@ -374,6 +374,11 @@ if (!is_null($events['events'])) {
 
 				$handle = fopen($urlIm, "r");
 				error_log('handle = ' . $handle , 0);
+				$rgb0 = imagecolorat($handle, $width/2, $height/2);
+				$r0 = ($rgb >> 16) & 0xFF;
+				$g0= ($rgb >> 8) & 0xFF;
+				$b0 = $rgb & 0xFF;
+				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
 
 				if(empty($rgb)){
 					$talk = 'empty rgb';
