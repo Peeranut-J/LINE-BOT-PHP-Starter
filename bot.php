@@ -332,11 +332,11 @@ if (!is_null($events['events'])) {
 				$b = $rgb & 0xFF;
 				$colors = imagecolorsforindex($img, $rgb);
 				error_log('color using img = ' . $colors, 0);
-				$colors = imagecolorsforindex($test00, $rgb);
+		//		$colors = imagecolorsforindex($test00, $rgb);
 				error_log('url = ' . $urlIm, 0);
 				error_log('img = ' . $img, 0);
 				error_log('rgb = ' . $rgb, 0);
-				error_log('color using test00 = ' . $colors, 0);
+		//		error_log('color using test00 = ' . $colors, 0);
 				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' c0 = ' . $colors[0] . ' c1 = ' . $colors[1] . ' img =  ' . $img . ' rgb = ' . $rgb; 
 				error_log($talk , 0);
 				if(empty($rgb)){
