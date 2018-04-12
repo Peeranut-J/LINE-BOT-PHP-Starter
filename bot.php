@@ -342,6 +342,16 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 				$hi2 = scaleImageFileToBlob($data);
 				error_log('img from funct -- data = ' . $hi2, 0);
+
+				$datax = base64_decode($data);
+				$imdtx = imagecreatefromstring($datax);
+				header('Content-Type: image/png');
+				$test01 = imagejpeg($imdtx);
+				error_log('test01 = ' . $test01, 0);
+				error_log('imgdtx = ' . $imdtx, 0);
+				$hi6 = scaleImageFileToBlob($test01);
+				error_log('img from funct -- test01 = ' . $hi6, 0);
+
 			//	fclose($fp);
 			//	$img = imagecreatefromjpeg("example_homepage.jpg");
 		//		$img = imagecreatefromstring($data);
