@@ -371,6 +371,10 @@ if (!is_null($events['events'])) {
 		//		error_log('color using test00 = ' . $colors, 0);
 				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' c0 = ' . $colors[0] . ' c1 = ' . $colors[1] . ' img =  ' . $img . ' rgb = ' . $rgb; 
 				error_log($talk , 0);
+
+				$handle = fopen($urlIm, "r");
+				error_log('handle = ' . $handle , 0);
+
 				if(empty($rgb)){
 					$talk = 'empty rgb';
 				}
