@@ -219,11 +219,17 @@ if (!is_null($events['events'])) {
 			fclose($fp);
 
 	//		$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
+	/*
 			$data = getimagesize($ch);
 			$width = $data[0];
 			$height = $data[1];
 			$talk = $width . ' ' . $height;
 			error_log($talk , 0);
+			*/
+
+			$width = imagesx($ch);
+			$height = imagesy($ch);
+			error_log('w = ' . $width . ' h = ' . $height,0);
 
 			error_log('save_to = ' . $save_to,0);
 			$ch = $save_to;
