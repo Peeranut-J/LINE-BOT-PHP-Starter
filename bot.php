@@ -209,7 +209,7 @@ if (!is_null($events['events'])) {
 	//		error_log("img + urlIm + rescode" , 0);
 			error_log('ch = ' . $ch , 0);
 			//error_log("space" , 0);
-	//		error_log($urlIm , 0);
+			error_log('url = ' . $urlIm , 0);
 			//error_log($ch , 0);
 			//error_log($rescode , 0);
 
