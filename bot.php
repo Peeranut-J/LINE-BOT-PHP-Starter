@@ -302,13 +302,8 @@ if (!is_null($events['events'])) {
 				];
 			}
 			else if($text == 'normal1'){
-				$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
-				$data = getimagesize($urlIm);
-				$width = $data[0];
-				$height = $data[1];
-				$talk = $width . ' ' . $height;
-				error_log($talk , 0);
 
+			/*
 				header('Content-type: image/jpeg');
 				$getcon = file_get_contents($urlIm);
 				error_log('img from get content = ' . $getcon, 0);
@@ -319,14 +314,14 @@ if (!is_null($events['events'])) {
 				$g0= ($rgb >> 8) & 0xFF;
 				$b0 = $rgb & 0xFF;
 				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
-
+				
 				$hi1 = scaleImageFileToBlob($urlIm);
-				error_log('img from funct -- url = ' . $hi1, 0);
+				error_log('img from funct -- url = ' . $hi1, 0);		*/
 				//function in range inner
 				//function in range outer
 				//function in range deadEye
 				//function in range .... etc.
-				
+				/*
 				//$remoteImage = "http://www.example.com/gifs/logo.gif";
 				$imginfo = getimagesize($urlIm);
 				header("Content-type: image/jpeg");
@@ -337,9 +332,10 @@ if (!is_null($events['events'])) {
 				$g0= ($rgb >> 8) & 0xFF;
 				$b0 = $rgb & 0xFF;
 				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
-
+				*/
 				//need to make picture from url .jpg
 			//	header('Content-Type: image/jpeg');
+			/*
 				$img = imagecreatefromjpeg($urlIm);
 				error_log('img00 = ' . $img, 0);
 
@@ -352,7 +348,8 @@ if (!is_null($events['events'])) {
 				error_log('img = ' . $img, 0);
 				$hi4 = scaleImageFileToBlob($test00);
 				error_log('img from funct -- test00 = ' . $hi4, 0);
-
+				*/
+				/*
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $urlIm); 
 			//	$fp = fopen("example_homepage.jpg", "w");
@@ -364,7 +361,8 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 				$hi2 = scaleImageFileToBlob($data);
 				error_log('img from funct -- data = ' . $hi2, 0);
-
+				*/
+				/*
 				$datax = base64_decode($data);
 				$imdtx = imagecreatefromstring($datax);
 				header('Content-Type: image/png');
@@ -373,13 +371,14 @@ if (!is_null($events['events'])) {
 				error_log('imgdtx = ' . $imdtx, 0);
 				$hi6 = scaleImageFileToBlob($test01);
 				error_log('img from funct -- test01 = ' . $hi6, 0);
-
+				*/
 			//	fclose($fp);
 			//	$img = imagecreatefromjpeg("example_homepage.jpg");
 		//		$img = imagecreatefromstring($data);
 			//	$img = imagecreatefromjpeg($data);
 			//	$img = @imagecreatefromjpeg($urlIm);
 			//	$img = @imagecreatefrompng($urlIm);
+				/*
 				$rgb = imagecolorat($urlIm, $width/2, $height/2);
 				$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
@@ -393,7 +392,8 @@ if (!is_null($events['events'])) {
 		//		error_log('color using test00 = ' . $colors, 0);
 				$talk = $r . ' ' . $g . ' ' . $b . ' w = ' . $width/2 . ' h = ' . $height/2 . ' c0 = ' . $colors[0] . ' c1 = ' . $colors[1] . ' img =  ' . $img . ' rgb = ' . $rgb; 
 				error_log($talk , 0);
-
+				*/
+				/*
 				$handle = fopen($urlIm, "r");
 				error_log('handle = ' . $handle , 0);
 				$rgb0 = imagecolorat($handle, $width/2, $height/2);
@@ -401,7 +401,7 @@ if (!is_null($events['events'])) {
 				$g0= ($rgb >> 8) & 0xFF;
 				$b0 = $rgb & 0xFF;
 				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
-
+				
 				$simg;
 				$simg = grab_image($urlIm,$simg);
 				$esimg = empty($simg);
@@ -411,7 +411,7 @@ if (!is_null($events['events'])) {
 				$r0 = ($rgb >> 16) & 0xFF;
 				$g0= ($rgb >> 8) & 0xFF;
 				$b0 = $rgb & 0xFF;
-				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
+				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);			*/
 				/*
 		//		$url = $_GET['url'];
 				$allow = ['gif', 'jpg', 'png'];  // allowed extensions
@@ -430,10 +430,10 @@ if (!is_null($events['events'])) {
 				error_log('re = ' . $re,0);
 				*/
 		//		$url = $_GET['url'];
-				$allow = ['gif', 'jpg', 'png'];  //allowed extensions
+		/*		$allow = ['gif', 'jpg', 'png'];  //allowed extensions
 				$url_info = pathinfo($urlIm);
 				$save_to = $url_info['basename'];  //set image path with the same name in 'imgs/'
-				$re ='';  //for data to output
+				$re ='';  //for data to output	*/
 /*
 				$data = getimagesize($img);
 				$width = $data[0];
@@ -441,12 +441,9 @@ if (!is_null($events['events'])) {
 				$talk = $width . ' ' . $height;
 				error_log('w h = ' . $talk . "\n");
 */	
-				$rgb = imagecolorat($img, 800, 608);
-				$r = ($rgb >> 16) & 0xFF;
-				$g = ($rgb >> 8) & 0xFF;
-				$b = $rgb & 0xFF;
+				
 
-				error_log('Hi r g b = ' . $r . ' ' . $g . ' ' . $b . "\n");
+			//	error_log('Hi r g b = ' . $r . ' ' . $g . ' ' . $b . "\n");
 	
 				//echo 'r g b = ' . $r . ' ' . $g . ' ' . $b;
 /*
@@ -467,6 +464,21 @@ if (!is_null($events['events'])) {
 				$b0 = $rgb & 0xFF;
 				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
 */
+				$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
+				$data = getimagesize($urlIm);
+				$width = $data[0];
+				$height = $data[1];
+				$talk = $width . ' ' . $height;
+				error_log($talk , 0);
+
+				$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
+				error_log('img url = ' . $talk , 0);
+				$rgb = imagecolorat($img, 800, 608);
+				$r = ($rgb >> 16) & 0xFF;
+				$g = ($rgb >> 8) & 0xFF;
+				$b = $rgb & 0xFF;
+				error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
+
 				if(empty($rgb)){
 					$talk = 'empty rgb';
 				}
