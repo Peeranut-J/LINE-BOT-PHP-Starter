@@ -207,15 +207,16 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_BINARYTRANSFER,true);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			$img=curl_exec($ch);
+			$raw=curl_exec($ch);
 			//not work
 			//$rescode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
 			//$rescode = file_get_contents($ch);
 			echo curl_error($ch);
 			curl_close ($ch);
-			/*$fp = fopen($img,'x');
+			$save_to = ' ';
+			$fp = fopen($save_to,'x');
 			fwrite($fp, $raw);
-			fclose($fp);*/
+			fclose($fp);
 
 	//		$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
 			$data = getimagesize($ch);
@@ -223,6 +224,9 @@ if (!is_null($events['events'])) {
 			$height = $data[1];
 			$talk = $width . ' ' . $height;
 			error_log($talk , 0);
+
+			error_log('save_to = ' . $save_to,0);
+			$ch = $save_to;
 
 			$img = imagecreatefromjpeg($ch); // resource id = xxx ;
 			error_log('ch = ' . $ch . 'img = ' . $img, 0);
