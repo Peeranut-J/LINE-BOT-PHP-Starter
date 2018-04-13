@@ -236,8 +236,10 @@ if (!is_null($events['events'])) {
 			$b = $rgb & 0xFF;
 			error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
 
+			//for all function
+
 	//		error_log("img + urlIm + rescode" , 0);
-			error_log('ch = ' . $ch , 0);
+	//		error_log('ch = ' . $ch , 0);
 			//error_log("space" , 0);
 			error_log('url = ' . $urlIm , 0);
 			//error_log($ch , 0);
@@ -245,10 +247,7 @@ if (!is_null($events['events'])) {
 
 			if(empty($img)){
 				$talk = 'no pic';
-			} else {
-				$talk = $imageId;
 			}
-
 			//$talk = getimagesize($urlIm);
 			//error_log($talk , 0);
 	//		$data = getimagesize($img);
@@ -306,8 +305,6 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				//'text' => $text
-				//'text' => $imageId
 				'text' => $talk
 			];
 
