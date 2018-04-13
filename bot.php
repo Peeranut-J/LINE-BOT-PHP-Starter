@@ -241,7 +241,7 @@ if (!is_null($events['events'])) {
 			$r = ($rgb >> 16) & 0xFF;
 			$g = ($rgb >> 8) & 0xFF;
 			$b = $rgb & 0xFF;
-			error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
+			error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
 
 			//for all function
 
