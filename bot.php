@@ -52,6 +52,31 @@ function grab_image($url,$saveto){
 	return $saveto;
 }
 
+function imageCreateFromAny($filepath) { 
+    $type = getImageSize($filepath); // [] if you don't have exif you could use getImageSize() 
+    $allowedTypes = array( 
+        1,  // [] gif 
+        2,  // [] jpg 
+        3  // [] png 
+    ); 
+    if (!in_array($type, $allowedTypes)) { 
+        return false; 
+    } 
+    switch ($type) { 
+        case 1 : 
+            $im = imageCreateFromGif($filepath); 
+        break; 
+        case 2 : 
+            $im = imageCreateFromJpeg($filepath); 
+        break; 
+        case 3 : 
+            $im = imageCreateFromPng($filepath); 
+        break;
+    }    
+    return $im;  
+} 
+
+
 //from http://php.net/manual/en/function.imagejpeg.php comment 1
 function scaleImageFileToBlob($file) {
 
@@ -487,7 +512,8 @@ if (!is_null($events['events'])) {
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
 
-				$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
+		//		$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
+				$img = imageCreateFromAny($urlIm);
 				error_log('img url = ' . $urlIm , 0);
 				$rgb = imagecolorat($img, 800, 608);
 				$r = ($rgb >> 16) & 0xFF;
