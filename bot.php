@@ -611,7 +611,7 @@ if (!is_null($events['events'])) {
 			} else if($text == 'ขอดูผลการวินิจฉัย') {
 			$messages = [
 				'type' => 'text',
-				'text' => 'https://goo.gl/forms/Asv9LpuNMqqu57pX2'
+				'text' => 'ผลการวินิจฉัย ณ ปัจจุบัน แพทย์จะส่งทางอีเมลล์ที่ท่านลงทะเบียนไว้ ภายใน 7 วันทำการ ขอบคุณครับ'
 			];
 			} else if($text == 'ขอรายชื่อโรงพยาบาลที่เกี่ยวข้อง') {
 			$messages = [
