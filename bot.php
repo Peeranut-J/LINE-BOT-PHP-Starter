@@ -449,7 +449,7 @@ if (!is_null($events['events'])) {
 				error_log('Hi r g b = ' . $r . ' ' . $g . ' ' . $b . "\n");
 	
 				//echo 'r g b = ' . $r . ' ' . $g . ' ' . $b;
-
+/*
 				//if allowed extension
 				if(in_array($url_info['extension'], $allow)){
 				  //if the file not exists on server, gets its data from url, and saves it
@@ -466,7 +466,7 @@ if (!is_null($events['events'])) {
 				$g0= ($rgb >> 8) & 0xFF;
 				$b0 = $rgb & 0xFF;
 				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
-
+*/
 				if(empty($rgb)){
 					$talk = 'empty rgb';
 				}
