@@ -434,13 +434,13 @@ if (!is_null($events['events'])) {
 				$url_info = pathinfo($urlIm);
 				$save_to = $url_info['basename'];  //set image path with the same name in 'imgs/'
 				$re ='';  //for data to output
-
+/*
 				$data = getimagesize($img);
 				$width = $data[0];
 				$height = $data[1];
 				$talk = $width . ' ' . $height;
 				error_log('w h = ' . $talk . "\n");
-	
+*/	
 				$rgb = imagecolorat($img, 800, 608);
 				$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
