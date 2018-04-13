@@ -39,6 +39,7 @@ function grab_image($url,$saveto){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
     $raw=curl_exec($ch);
+	echo($raw);
 	error_log('raw = ' . $raw,0);
     curl_close ($ch);
     if(file_exists($saveto)){
