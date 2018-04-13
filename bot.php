@@ -435,6 +435,21 @@ if (!is_null($events['events'])) {
 				$save_to = $url_info['basename'];  //set image path with the same name in 'imgs/'
 				$re ='';  //for data to output
 
+				$data = getimagesize($img);
+				$width = $data[0];
+				$height = $data[1];
+				$talk = $width . ' ' . $height;
+				error_log('w h = ' . $talk . "\n");
+	
+				$rgb = imagecolorat($img, 800, 608);
+				$r = ($rgb >> 16) & 0xFF;
+				$g = ($rgb >> 8) & 0xFF;
+				$b = $rgb & 0xFF;
+
+				error_log('Hi r g b = ' . $r . ' ' . $g . ' ' . $b . "\n");
+	
+				//echo 'r g b = ' . $r . ' ' . $g . ' ' . $b;
+
 				//if allowed extension
 				if(in_array($url_info['extension'], $allow)){
 				  //if the file not exists on server, gets its data from url, and saves it
