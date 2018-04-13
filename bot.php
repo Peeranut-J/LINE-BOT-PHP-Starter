@@ -30,6 +30,22 @@ function testMakeFunction($one){
 	return $tell;
 }
 
+function grab_image($url,$saveto){
+    $ch = curl_init ($url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+    $raw=curl_exec($ch);
+    curl_close ($ch);
+    if(file_exists($saveto)){
+        unlink($saveto);
+    }
+    $fp = fopen($saveto,'x');
+    fwrite($fp, $raw);
+    fclose($fp);
+	return $saveto;
+}
+
 //from http://php.net/manual/en/function.imagejpeg.php comment 1
 function scaleImageFileToBlob($file) {
 
@@ -374,6 +390,15 @@ if (!is_null($events['events'])) {
 
 				$handle = fopen($urlIm, "r");
 				error_log('handle = ' . $handle , 0);
+				$rgb0 = imagecolorat($handle, $width/2, $height/2);
+				$r0 = ($rgb >> 16) & 0xFF;
+				$g0= ($rgb >> 8) & 0xFF;
+				$b0 = $rgb & 0xFF;
+				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
+
+				$simg;
+				$simg = grab_image($urlIm,$simg);
+				error_log('simg = ' . $simg , 0);
 				$rgb0 = imagecolorat($handle, $width/2, $height/2);
 				$r0 = ($rgb >> 16) & 0xFF;
 				$g0= ($rgb >> 8) & 0xFF;
