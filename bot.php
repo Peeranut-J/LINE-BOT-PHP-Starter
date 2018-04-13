@@ -31,16 +31,21 @@ function testMakeFunction($one){
 }
 
 function grab_image($url,$saveto){
+	error_log('url = ' . $url,0);
+	error_log('saveto = ' . $saveto,0);
     $ch = curl_init ($url);
+	error_log('ch = ' . $ch,0);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
     $raw=curl_exec($ch);
+	error_log('raw = ' . $raw,0);
     curl_close ($ch);
     if(file_exists($saveto)){
         unlink($saveto);
     }
     $fp = fopen($saveto,'x');
+	error_log('fp = ' . $fp,0);
     fwrite($fp, $raw);
     fclose($fp);
 	return $saveto;
