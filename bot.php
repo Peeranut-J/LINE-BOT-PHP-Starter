@@ -398,6 +398,8 @@ if (!is_null($events['events'])) {
 
 				$simg;
 				$simg = grab_image($urlIm,$simg);
+				$esimg = empty($simg);
+				error_log('empty simg? = ' . $esimg,0);
 				error_log('simg = ' . $simg , 0);
 				$rgb0 = imagecolorat($handle, $width/2, $height/2);
 				$r0 = ($rgb >> 16) & 0xFF;
