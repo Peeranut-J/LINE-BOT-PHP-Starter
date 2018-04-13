@@ -52,9 +52,9 @@ function grab_image($url,$saveto){
 	return $saveto;
 }
 
-function imageCreateFromAny($filepath) { 
-    $type = exif_imagetype($filepath); // [] if you don't have exif you could use getImageSize() 
-	error_log('type = ' . $type . ' url = ' . $filepath);
+function imageCreateFromAny($filepath,$img) { 
+    $type = getimagesize($filepath); // [] if you don't have exif you could use getImageSize() 
+	error_log('type = ' . $type . ' url = ' . $filepath . ' img = ' . $img);
     $allowedTypes = array( 
         1,  // [] gif 
         2,  // [] jpg 
@@ -65,13 +65,13 @@ function imageCreateFromAny($filepath) {
     } 
     switch ($type) { 
         case 1 : 
-            $im = imageCreateFromGif($filepath); 
+            $im = imageCreateFromGif($img); 
         break; 
         case 2 : 
-            $im = imageCreateFromJpeg($filepath); 
+            $im = imageCreateFromJpeg($img); 
         break; 
         case 3 : 
-            $im = imageCreateFromPng($filepath); 
+            $im = imageCreateFromPng($img); 
         break;
     }    
     return $im;  
@@ -513,8 +513,8 @@ if (!is_null($events['events'])) {
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
 
-		//		$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
-				$img = imageCreateFromAny($urlIm);
+				$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
+		//		$img = imageCreateFromAny($urlIm);
 				error_log('img url = ' . $urlIm , 0);
 				$rgb = imagecolorat($img, 800, 608);
 				$r = ($rgb >> 16) & 0xFF;
