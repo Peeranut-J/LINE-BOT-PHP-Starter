@@ -413,6 +413,22 @@ if (!is_null($events['events'])) {
 				$b0 = $rgb & 0xFF;
 				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
 
+		//		$url = $_GET['url'];
+				$allow = ['gif', 'jpg', 'png'];  // allowed extensions
+				$img = file_get_contents($urlIm);  // get image data from $url
+				$url_info = pathinfo($urlIm);
+
+				// if allowed extension
+				if(in_array($url_info['extension'], $allow)) {
+				  $save_to = 'imgs/'. $url_info['basename'];  // add image with the same name in 'imgs/' folder
+				  if(file_put_contents($save_to, $img)) {
+					$re = '<img src="'.  $save_to .'" title="'. $url_info['basename'] .'" />';
+				  }
+				  else $re = 'Unable to save the file';
+				}
+				else $re = 'Invalid extension: '. $url_info['extension'];
+				error_log('re = ' . $re,0);
+
 				if(empty($rgb)){
 					$talk = 'empty rgb';
 				}
