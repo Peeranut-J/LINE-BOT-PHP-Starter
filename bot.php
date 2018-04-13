@@ -412,7 +412,7 @@ if (!is_null($events['events'])) {
 				$g0= ($rgb >> 8) & 0xFF;
 				$b0 = $rgb & 0xFF;
 				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
-
+				/*
 		//		$url = $_GET['url'];
 				$allow = ['gif', 'jpg', 'png'];  // allowed extensions
 				$img = file_get_contents($urlIm);  // get image data from $url
@@ -427,6 +427,23 @@ if (!is_null($events['events'])) {
 				  else $re = 'Unable to save the file';
 				}
 				else $re = 'Invalid extension: '. $url_info['extension'];
+				error_log('re = ' . $re,0);
+				*/
+		//		$url = $_GET['url'];
+				$allow = ['gif', 'jpg', 'png'];  //allowed extensions
+				$url_info = pathinfo($urlIm);
+				$save_to = $url_info['basename'];  //set image path with the same name in 'imgs/'
+				$re ='';  //for data to output
+
+				//if allowed extension
+				if(in_array($url_info['extension'], $allow)){
+				  //if the file not exists on server, gets its data from url, and saves it
+				  if(!file_exists($save_to)){
+					$img = file_get_contents($urlIm);
+					if(!file_put_contents($save_to, $img)) $re ='Unable to save the file';
+				  }
+				}
+				else $re ='Invalid extension: '. $url_info['extension'];
 				error_log('re = ' . $re,0);
 
 				if(empty($rgb)){
