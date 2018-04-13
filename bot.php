@@ -227,15 +227,16 @@ if (!is_null($events['events'])) {
 			error_log($talk , 0);
 			*/
 
-			$width = imagesx($ch);
-			$height = imagesy($ch);
-			error_log('w = ' . $width . ' h = ' . $height,0);
-
 			error_log('save_to = ' . $save_to,0);
 			$ch = $save_to;
 
 			$img = imagecreatefromjpeg($ch); // resource id = xxx ;
 			error_log('ch = ' . $ch . 'img = ' . $img, 0);
+
+			$width = imagesx($img);
+			$height = imagesy($img);
+			error_log('w = ' . $width . ' h = ' . $height,0);
+
 			$rgb = imagecolorat($img, 800, 608);
 			$r = ($rgb >> 16) & 0xFF;
 			$g = ($rgb >> 8) & 0xFF;
