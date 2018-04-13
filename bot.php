@@ -191,10 +191,25 @@ if (!is_null($events['events'])) {
 			fwrite($fp, $raw);
 			fclose($fp);*/
 
-			error_log("img + urlIm + rescode" , 0);
-			error_log($img , 0);
+	//		$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
+			$data = getimagesize($ch);
+			$width = $data[0];
+			$height = $data[1];
+			$talk = $width . ' ' . $height;
+			error_log($talk , 0);
+
+			$img = imagecreatefromjpeg($ch); // resource id = xxx ;
+			error_log('ch = ' . $ch . 'img = ' . $img, 0);
+			$rgb = imagecolorat($img, 800, 608);
+			$r = ($rgb >> 16) & 0xFF;
+			$g = ($rgb >> 8) & 0xFF;
+			$b = $rgb & 0xFF;
+			error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
+
+	//		error_log("img + urlIm + rescode" , 0);
+			error_log('ch = ' . $ch , 0);
 			//error_log("space" , 0);
-			error_log($urlIm , 0);
+	//		error_log($urlIm , 0);
 			//error_log($ch , 0);
 			//error_log($rescode , 0);
 
@@ -207,12 +222,13 @@ if (!is_null($events['events'])) {
 			//$talk = getimagesize($urlIm);
 			//error_log($talk , 0);
 	//		$data = getimagesize($img);
+	/*
 			$data = getimagesize($rescode);
 			$width = $data[0];
 			$height = $data[1];
 			$talk = $width . ' ' . $height;
 			error_log($talk , 0);
-	
+	*/
 
 			//$width = imagesx($img);
 			//$height = imagesy($img);
@@ -472,7 +488,7 @@ if (!is_null($events['events'])) {
 				error_log($talk , 0);
 
 				$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
-				error_log('img url = ' . $talk , 0);
+				error_log('img url = ' . $urlIm , 0);
 				$rgb = imagecolorat($img, 800, 608);
 				$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
