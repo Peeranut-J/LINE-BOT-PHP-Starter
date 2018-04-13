@@ -53,7 +53,8 @@ function grab_image($url,$saveto){
 }
 
 function imageCreateFromAny($filepath) { 
-    $type = getImageSize($filepath); // [] if you don't have exif you could use getImageSize() 
+    $type = exif_imagetype($filepath); // [] if you don't have exif you could use getImageSize() 
+	error_log('type = ' . $type . ' url = ' . $filepath);
     $allowedTypes = array( 
         1,  // [] gif 
         2,  // [] jpg 
