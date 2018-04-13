@@ -407,7 +407,7 @@ if (!is_null($events['events'])) {
 				$esimg = empty($simg);
 				error_log('empty simg? = ' . $esimg,0);
 				error_log('simg = ' . $simg , 0);
-				$rgb0 = imagecolorat($handle, $width/2, $height/2);
+				$rgb0 = imagecolorat($simg, $width/2, $height/2);
 				$r0 = ($rgb >> 16) & 0xFF;
 				$g0= ($rgb >> 8) & 0xFF;
 				$b0 = $rgb & 0xFF;
@@ -445,6 +445,12 @@ if (!is_null($events['events'])) {
 				}
 				else $re ='Invalid extension: '. $url_info['extension'];
 				error_log('re = ' . $re,0);
+
+				$rgb0 = imagecolorat($save_to, $width/2, $height/2);
+				$r0 = ($rgb >> 16) & 0xFF;
+				$g0= ($rgb >> 8) & 0xFF;
+				$b0 = $rgb & 0xFF;
+				error_log('r0 g0 b0 = ' . $r0 . ' ' . $g0 . ' ' . $b0, 0);
 
 				if(empty($rgb)){
 					$talk = 'empty rgb';
