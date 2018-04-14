@@ -158,6 +158,28 @@ function inRangeGreyZone($r,$g,$b){
 	return $tf;
 }
 
+function checkGreyArea($img,$width,$height){
+	$tf = false;
+	$count = 0;
+	for($x = 0; $x < $width; $x++) {
+		for($y = 0; $y < $height; $y++) {
+			// pixel color at (x, y)
+			$rgb = imagecolorat($img, $x, $y);
+			$r = ($rgb >> 16) & 0xFF;
+			$g = ($rgb >> 8) & 0xFF;
+			$b = $rgb & 0xFF;
+			//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
+			if(inRangeGreyZone((int)$r,(int)$g,(int)$b)){
+				$count = $count + 1;
+			}
+		}
+	}
+	if($count >= 19515){
+		$tf = true;
+	}
+	return $tf;
+}
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -608,7 +630,10 @@ if (!is_null($events['events'])) {
 				error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
 				*/
 				$talk = 0;
-				$test_inc = 0;
+				$tfg = checkGreyArea($img,$width,$height);
+				$talk = $tfg;
+				//$test_inc = 0;
+				/*
 				for($x = 0; $x < $width; $x++) {
 					for($y = 0; $y < $height; $y++) {
 						// pixel color at (x, y)
@@ -626,12 +651,13 @@ if (!is_null($events['events'])) {
 						/*
 						if($r >= 129 && $r <= 156 && $g >= 80 && $g <= 120 && $b >= 31 && $b <= 48){
 							$talk = $talk + 1; 
-						}*/
-						$test_inc = $test_inc + 1;
+						}
+						//$test_inc = $test_inc + 1;
 						//error_log('grey zone = ' . $talk,0);
 					}
 				}
-				error_log('grey zone = ' . $talk . ' test inc = ' . $test_inc,0);
+				*/
+		//		error_log('grey zone = ' . $talk . ' test inc = ' . $test_inc,0);
 				/*
 				if(empty($rgb)){
 					$talk = 'empty rgb';
