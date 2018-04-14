@@ -177,7 +177,8 @@ function checkGreyArea($img,$width,$height){
 	if($count >= 19515){
 		$tf = true;
 	}
-	return $tf;
+	//return $tf;
+	return $count;
 }
 
 // Validate parsed JSON data
@@ -567,6 +568,8 @@ if (!is_null($events['events'])) {
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
 
+				$talk = checkGreyArea($img,$width,$height);
+
 				$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
 		//		$img = imageCreateFromAny($urlIm);
 				error_log('img url = ' . $urlIm , 0);
@@ -593,6 +596,11 @@ if (!is_null($events['events'])) {
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
 
+				$img = imagecreatefromjpeg($urlIm);
+				$talk = 0;
+				$tfg = checkGreyArea($img,$width,$height);
+				$talk = $tfg;
+
 				$messages = [
 				'type' => 'text',
 				'text' => $talk
@@ -605,6 +613,11 @@ if (!is_null($events['events'])) {
 				$height = $data[1];
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
+
+				$img = imagecreatefromjpeg($urlIm);
+				$talk = 0;
+				$tfg = checkGreyArea($img,$width,$height);
+				$talk = $tfg;
 
 				$messages = [
 				'type' => 'text',
@@ -681,6 +694,11 @@ if (!is_null($events['events'])) {
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
 
+				$img = imagecreatefromjpeg($urlIm);
+				$talk = 0;
+				$tfg = checkGreyArea($img,$width,$height);
+				$talk = $tfg;
+
 				$messages = [
 				'type' => 'text',
 				'text' => $talk
@@ -693,6 +711,11 @@ if (!is_null($events['events'])) {
 				$height = $data[1];
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
+
+				$img = imagecreatefromjpeg($urlIm);
+				$talk = 0;
+				$tfg = checkGreyArea($img,$width,$height);
+				$talk = $tfg;
 
 				$messages = [
 				'type' => 'text',
