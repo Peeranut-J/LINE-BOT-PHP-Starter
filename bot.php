@@ -617,7 +617,7 @@ if (!is_null($events['events'])) {
 						$b = $rgb & 0xFF;
 						//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
 						if(inRangeGreyZone($r,$g,$b)){
-							$talk++;
+							$talk = talk + 1;
 						}
 						//error_log('grey zone = ' . $talk,0);
 					}
