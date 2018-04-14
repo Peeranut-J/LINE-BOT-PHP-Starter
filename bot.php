@@ -656,11 +656,12 @@ if (!is_null($events['events'])) {
 
 				$talk = 0;
 				$talk = checkGreyArea($img,$width,$height);
+				$tf = false;
 				if($talk >= 30769){
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = $tf . ' ' . $bd;
+				$talk = (string)$tf . ' ' . (string)$bd;
 
 
 				if(empty($rgb)){
@@ -685,11 +686,12 @@ if (!is_null($events['events'])) {
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
 
+				$tf = false;
 				if($talk >= 30769){
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = $tf . ' ' . $bd;
+				$talk = (string)$tf . ' ' . (string)$bd;
 
 				$messages = [
 				'type' => 'text',
@@ -709,11 +711,12 @@ if (!is_null($events['events'])) {
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
 
+				$tf = false;
 				if($talk >= 30769){
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = $tf . ' ' . $bd;
+				$talk = (string)$tf . ' ' . (string)$bd;
 
 				$messages = [
 				'type' => 'text',
@@ -742,11 +745,12 @@ if (!is_null($events['events'])) {
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
 
+				$tf = false;
 				if($talk >= 30769){
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = $tf . ' ' . $bd;
+				$talk = (string)$tf . ' ' . (string)$bd;
 
 				//$test_inc = 0;
 				/*
@@ -806,11 +810,12 @@ if (!is_null($events['events'])) {
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
 
+				$tf = false;
 				if($talk >= 30769){
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = $tf . ' ' . $bd;
+				$talk = (string)$tf . ' ' . (string)$bd;
 
 				$messages = [
 				'type' => 'text',
@@ -830,11 +835,12 @@ if (!is_null($events['events'])) {
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
 
+				$tf = false;
 				if($talk >= 30769){
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = $tf . ' ' . $bd;
+				$talk = (string)$tf . ' ' . (string)$bd;
 
 				$messages = [
 				'type' => 'text',
