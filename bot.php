@@ -606,6 +606,8 @@ if (!is_null($events['events'])) {
 				$b = $rgb & 0xFF;
 				error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
 
+				$talk = 0;
+
 				for($x = 0; $x < $width; $x++) {
 					for($y = 0; $y < $height; $y++) {
 						// pixel color at (x, y)
