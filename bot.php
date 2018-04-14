@@ -146,7 +146,33 @@ function scaleImageFileToBlob($file) {
 
 function inRangeInnerCircle($r,$g,$b){
 	$tf = false;
-	//if($r )
+	if($r >= 242 && $r <= 255 && $g >= 170 && $g <= 255 && $b >= 30 && $b <= 117){
+		$tf = true;
+	}
+	return $tf;
+}
+
+function inRangeOuterCircle($r,$g,$b){
+	$tf = false;
+	if($r >= 200 && $r <= 255 && $g >= 100 && $g <= 168 && $b >= 18 && $b <= 80){
+		$tf = true;
+	}
+	return $tf;
+}
+
+function inRangeBloodVessel($r,$g,$b){
+	$tf = false;
+	if($r >= 70 && $r <= 255 && $g >= 15 && $g <= 95 && $b >= 3 && $b <= 25){
+		$tf = true;
+	}
+	return $tf;
+}
+
+function inRangeOuterEye($r,$g,$b){
+	$tf = false;
+	if($r >= 69 && $r <= 224 && $g >= 29 && $g <= 95 && $b >= 1 && $b <= 30){
+		$tf = true;
+	}
 	return $tf;
 }
 
@@ -156,6 +182,14 @@ function inRangeGreyZone($r,$g,$b){
 		$tf = true;
 	}*/
 	if($r >= 129 && $r <= 196 && $g >= 80 && $g <= 135 && $b >= 31 && $b <= 60){
+		$tf = true;
+	}
+	return $tf;
+}
+
+function inRangeBloodArea($r,$g,$b){
+	$tf = false;
+	if($r >= 125 && $r <= 136 && $g >= 1 && $g <= 8 && $b >= 1 && $b <= 8){
 		$tf = true;
 	}
 	return $tf;
@@ -177,11 +211,51 @@ function checkGreyArea($img,$width,$height){
 			}
 		}
 	}
-	if($count >= 19515){
+	if($count >= 30769){
 		$tf = true;
 	}
 	//return $tf;
 	return $count;
+}
+
+function checkBloodArea($img,$width,$height){
+	$tf = false;
+	$countX = 0;
+	$countY = 0;
+	for($x = 0; $x < $width; $x++) {
+		for($y = 0; $y < $height; $y++) {
+			// pixel color at (x, y)
+			$rgb = imagecolorat($img, $x, $y);
+			$r = ($rgb >> 16) & 0xFF;
+			$g = ($rgb >> 8) & 0xFF;
+			$b = $rgb & 0xFF;
+			//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
+			if(inRangeBloodArea((int)$r,(int)$g,(int)$b)){
+				for($i = $x; $i<($x+190) ; $i++){
+					$rgb = imagecolorat($img, $i, $y);
+					$r = ($rgb >> 16) & 0xFF;
+					$g = ($rgb >> 8) & 0xFF;
+					$b = $rgb & 0xFF;
+					if(inRangeBloodArea((int)$r,(int)$g,(int)$b)){
+						$countX++;
+					}
+				}
+				for($i = $y; $i<($y+200) ; $i++){
+					$rgb = imagecolorat($img, $x, $i);
+					$r = ($rgb >> 16) & 0xFF;
+					$g = ($rgb >> 8) & 0xFF;
+					$b = $rgb & 0xFF;
+					if(inRangeBloodArea((int)$r,(int)$g,(int)$b)){
+						$countY++;
+					}
+				}
+				if($countX >= 188 && $countY >= 195){
+					$tf = true;
+				}
+			}
+		}
+	}
+	return $tf;
 }
 
 // Validate parsed JSON data
@@ -582,6 +656,12 @@ if (!is_null($events['events'])) {
 
 				$talk = 0;
 				$talk = checkGreyArea($img,$width,$height);
+				if($talk >= 30769){
+					$tf = true;
+				}
+				$ba = checkBloodArea($img,$width,$height);
+				$talk = $tf . ' ' . $bd;
+
 
 				if(empty($rgb)){
 					$talk = 'empty rgb';
@@ -605,6 +685,12 @@ if (!is_null($events['events'])) {
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
 
+				if($talk >= 30769){
+					$tf = true;
+				}
+				$ba = checkBloodArea($img,$width,$height);
+				$talk = $tf . ' ' . $bd;
+
 				$messages = [
 				'type' => 'text',
 				'text' => $talk
@@ -622,6 +708,12 @@ if (!is_null($events['events'])) {
 				$talk = 0;
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
+
+				if($talk >= 30769){
+					$tf = true;
+				}
+				$ba = checkBloodArea($img,$width,$height);
+				$talk = $tf . ' ' . $bd;
 
 				$messages = [
 				'type' => 'text',
@@ -649,6 +741,13 @@ if (!is_null($events['events'])) {
 				$talk = 0;
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
+
+				if($talk >= 30769){
+					$tf = true;
+				}
+				$ba = checkBloodArea($img,$width,$height);
+				$talk = $tf . ' ' . $bd;
+
 				//$test_inc = 0;
 				/*
 				for($x = 0; $x < $width; $x++) {
@@ -707,6 +806,12 @@ if (!is_null($events['events'])) {
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
 
+				if($talk >= 30769){
+					$tf = true;
+				}
+				$ba = checkBloodArea($img,$width,$height);
+				$talk = $tf . ' ' . $bd;
+
 				$messages = [
 				'type' => 'text',
 				'text' => $talk
@@ -724,6 +829,12 @@ if (!is_null($events['events'])) {
 				$talk = 0;
 				$tfg = checkGreyArea($img,$width,$height);
 				$talk = $tfg;
+
+				if($talk >= 30769){
+					$tf = true;
+				}
+				$ba = checkBloodArea($img,$width,$height);
+				$talk = $tf . ' ' . $bd;
 
 				$messages = [
 				'type' => 'text',
