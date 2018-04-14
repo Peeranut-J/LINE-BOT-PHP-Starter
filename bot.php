@@ -144,6 +144,12 @@ function scaleImageFileToBlob($file) {
     return $final_image;
 }
 
+function inRangeInnerCircle($r,$g,$b){
+	$tf = false;
+	//if($r )
+	return $tf;
+}
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -237,11 +243,21 @@ if (!is_null($events['events'])) {
 			$height = imagesy($img);
 			error_log('w = ' . $width . ' h = ' . $height,0);
 
+			for($x = 0; $x < $width; $x++) {
+				for($y = 0; $y < $height; $y++) {
+					// pixel color at (x, y)
+					$color = imagecolorat($img, $x, $y);
+					$r = ($rgb >> 16) & 0xFF;
+					$g = ($rgb >> 8) & 0xFF;
+					$b = $rgb & 0xFF;
+					error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
+				}
+			}
 			$rgb = imagecolorat($img, 800, 608);
 			$r = ($rgb >> 16) & 0xFF;
 			$g = ($rgb >> 8) & 0xFF;
 			$b = $rgb & 0xFF;
-			error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
+	//		error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
 
 			//for all function
 
