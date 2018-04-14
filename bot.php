@@ -152,7 +152,10 @@ function inRangeInnerCircle($r,$g,$b){
 
 function inRangeGreyZone($r,$g,$b){
 	$tf = false;
-	if($r >= 129 && $r <= 156 && $g >= 80 && $g <= 120 && $b >= 31 && $b <= 48){
+	/*if($r >= 129 && $r <= 156 && $g >= 80 && $g <= 120 && $b >= 31 && $b <= 48){
+		$tf = true;
+	}*/
+	if($r >= 129 && $r <= 199 && $g >= 80 && $g <= 120 && $b >= 6 && $b <= 48){
 		$tf = true;
 	}
 	return $tf;
