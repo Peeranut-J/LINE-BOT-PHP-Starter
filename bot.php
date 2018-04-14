@@ -616,8 +616,11 @@ if (!is_null($events['events'])) {
 						$g = ($rgb >> 8) & 0xFF;
 						$b = $rgb & 0xFF;
 						//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
-						if(inRangeGreyZone((int)$r,(int)$g,(int)$b)){
+						/*if(inRangeGreyZone((int)$r,(int)$g,(int)$b)){
 							$talk = $talk + 1;
+						}*/
+						if($r >= 129 && $r <= 156 && $g >= 80 && $g <= 120 && $b >= 31 && $b <= 48){
+							$talk = $talk + 1; 
 						}
 						$test_inc = $test_inc + 1;
 						//error_log('grey zone = ' . $talk,0);
