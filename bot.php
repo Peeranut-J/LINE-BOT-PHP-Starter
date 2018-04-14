@@ -661,7 +661,12 @@ if (!is_null($events['events'])) {
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = $talk . ' ' . (string)$ba;
+				if(!$ba){
+					$say = 'false';
+				} else {
+					$say = 'true';
+				}
+				$talk = $talk . ' ' . $say;
 
 
 				if(empty($rgb)){
@@ -691,7 +696,12 @@ if (!is_null($events['events'])) {
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = (string)$tf . ' ' . (string)$bd;
+				if(!$ba){
+					$say = 'false';
+				} else {
+					$say = 'true';
+				}
+				$talk = $talk . ' ' . $say;
 
 				$messages = [
 				'type' => 'text',
@@ -716,7 +726,12 @@ if (!is_null($events['events'])) {
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = (string)$tf . ' ' . (string)$bd;
+				if(!$ba){
+					$say = 'false';
+				} else {
+					$say = 'true';
+				}
+				$talk = $talk . ' ' . $say;
 
 				$messages = [
 				'type' => 'text',
@@ -750,7 +765,12 @@ if (!is_null($events['events'])) {
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = (string)$tf . ' ' . (string)$bd;
+				if(!$ba){
+					$say = 'false';
+				} else {
+					$say = 'true';
+				}
+				$talk = $talk . ' ' . $say;
 
 				//$test_inc = 0;
 				/*
@@ -815,7 +835,12 @@ if (!is_null($events['events'])) {
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = (string)$tf . ' ' . (string)$bd;
+				if(!$ba){
+					$say = 'false';
+				} else {
+					$say = 'true';
+				}
+				$talk = $talk . ' ' . $say;
 
 				$messages = [
 				'type' => 'text',
@@ -840,7 +865,12 @@ if (!is_null($events['events'])) {
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = (string)$tf . ' ' . (string)$bd;
+				if(!$ba){
+					$say = 'false';
+				} else {
+					$say = 'true';
+				}
+				$talk = $talk . ' ' . $say;
 
 				$messages = [
 				'type' => 'text',
