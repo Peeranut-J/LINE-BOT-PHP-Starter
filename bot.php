@@ -568,8 +568,6 @@ if (!is_null($events['events'])) {
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
 
-				$talk = checkGreyArea($img,$width,$height);
-
 				$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
 		//		$img = imageCreateFromAny($urlIm);
 				error_log('img url = ' . $urlIm , 0);
@@ -578,6 +576,9 @@ if (!is_null($events['events'])) {
 				$g = ($rgb >> 8) & 0xFF;
 				$b = $rgb & 0xFF;
 				error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
+
+				$talk = 0;
+				$talk = checkGreyArea($img,$width,$height);
 
 				if(empty($rgb)){
 					$talk = 'empty rgb';
