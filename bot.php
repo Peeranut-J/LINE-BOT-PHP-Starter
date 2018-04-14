@@ -612,7 +612,7 @@ if (!is_null($events['events'])) {
 				for($x = 0; $x < $width; $x++) {
 					for($y = 0; $y < $height; $y++) {
 						// pixel color at (x, y)
-						$color = imagecolorat($img, $x, $y);
+						$rgb = imagecolorat($img, $x, $y);
 						$r = ($rgb >> 16) & 0xFF;
 						$g = ($rgb >> 8) & 0xFF;
 						$b = $rgb & 0xFF;
