@@ -150,6 +150,14 @@ function inRangeInnerCircle($r,$g,$b){
 	return $tf;
 }
 
+function inRangeGreyZone($r,$g,$b){
+	$tf = false;
+	if($r >= 129 && $r <= 156 && $g >= 80 && $g <= 120 && $b >= 31 && $b <= 48){
+		$tf = true;
+	}
+	return $tf;
+}
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -588,6 +596,33 @@ if (!is_null($events['events'])) {
 				$height = $data[1];
 				$talk = $width . ' ' . $height;
 				error_log($talk , 0);
+
+				$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
+		//		$img = imageCreateFromAny($urlIm);
+				error_log('img url = ' . $urlIm , 0);
+				$rgb = imagecolorat($img, 800, 608);
+				$r = ($rgb >> 16) & 0xFF;
+				$g = ($rgb >> 8) & 0xFF;
+				$b = $rgb & 0xFF;
+				error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
+
+				for($x = 0; $x < $width; $x++) {
+				for($y = 0; $y < $height; $y++) {
+					// pixel color at (x, y)
+					$color = imagecolorat($img, $x, $y);
+					$r = ($rgb >> 16) & 0xFF;
+					$g = ($rgb >> 8) & 0xFF;
+					$b = $rgb & 0xFF;
+					//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
+					if(inRangeGreyZone($r,$g,$b)){
+						$talk++;
+					}
+					error_log('grey zone = ' . $talk,0);
+				}
+
+				if(empty($rgb)){
+					$talk = 'empty rgb';
+				}
 
 				$messages = [
 				'type' => 'text',
