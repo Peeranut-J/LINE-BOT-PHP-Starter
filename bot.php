@@ -620,12 +620,13 @@ if (!is_null($events['events'])) {
 						/*if(inRangeGreyZone((int)$r,(int)$g,(int)$b)){
 							$talk = $talk + 1;
 						}*/
-						/*if((int)$r >= (int)124 && (int)$r <= (int)156 && (int)$g >= (int)54 && (int)$g <= (int)120 && (int)$b >= (int)20 && (int)$b <= (int)48){
-							$talk = $talk + 1; 
-						}*/
-						if($r >= 129 && $r <= 156 && $g >= 80 && $g <= 120 && $b >= 31 && $b <= 48){
+						if((int)$r >= (int)129 && (int)$r <= (int)156 && (int)$g >= (int)80 && (int)$g <= (int)120 && (int)$b >= (int)31 && (int)$b <= (int)48){
 							$talk = $talk + 1; 
 						}
+						/*
+						if($r >= 129 && $r <= 156 && $g >= 80 && $g <= 120 && $b >= 31 && $b <= 48){
+							$talk = $talk + 1; 
+						}*/
 						$test_inc = $test_inc + 1;
 						//error_log('grey zone = ' . $talk,0);
 					}
