@@ -590,7 +590,7 @@ if (!is_null($events['events'])) {
 				];
 			
 			}else if($text == 'glau1'){
-				$urlIm = 'https://preview.ibb.co/n3i2Gc/glau1.jpg';
+				$urlIm = 'https://image.ibb.co/fasVwn/glau1.jpg';
 				$data = getimagesize($urlIm);
 				$width = $data[0];
 				$height = $data[1];
@@ -645,7 +645,7 @@ if (!is_null($events['events'])) {
 				];
 			
 			}else if($text == 'glau3'){
-				$urlIm = 'https://preview.ibb.co/kJstpx/glau3.jpg';
+				$urlIm = 'https://image.ibb.co/e4TQU7/glau3.jpg';
 				$data = getimagesize($urlIm);
 				$width = $data[0];
 				$height = $data[1];
