@@ -661,7 +661,7 @@ if (!is_null($events['events'])) {
 					$tf = true;
 				}
 				$ba = checkBloodArea($img,$width,$height);
-				$talk = (string)$tf . ' ' . (string)$bd;
+				$talk = $talk . ' ' . (string)$ba;
 
 
 				if(empty($rgb)){
