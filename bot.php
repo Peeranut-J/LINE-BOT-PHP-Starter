@@ -600,12 +600,13 @@ if (!is_null($events['events'])) {
 				$img = imagecreatefromjpeg($urlIm); // resource id = xxx ;
 		//		$img = imageCreateFromAny($urlIm);
 				error_log('img url = ' . $urlIm , 0);
+				/*
 				$rgb = imagecolorat($img, 800, 608);
 				$r = ($rgb >> 16) & 0xFF;
 				$g = ($rgb >> 8) & 0xFF;
 				$b = $rgb & 0xFF;
 				error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
-
+				*/
 				$talk = 0;
 				$test_inc = 0;
 				for($x = 0; $x < $width; $x++) {
