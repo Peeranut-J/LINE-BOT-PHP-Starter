@@ -607,17 +607,18 @@ if (!is_null($events['events'])) {
 				error_log('r g b = ' . $r . ' ' . $g . ' ' . $b, 0);
 
 				for($x = 0; $x < $width; $x++) {
-				for($y = 0; $y < $height; $y++) {
-					// pixel color at (x, y)
-					$color = imagecolorat($img, $x, $y);
-					$r = ($rgb >> 16) & 0xFF;
-					$g = ($rgb >> 8) & 0xFF;
-					$b = $rgb & 0xFF;
-					//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
-					if(inRangeGreyZone($r,$g,$b)){
-						$talk++;
+					for($y = 0; $y < $height; $y++) {
+						// pixel color at (x, y)
+						$color = imagecolorat($img, $x, $y);
+						$r = ($rgb >> 16) & 0xFF;
+						$g = ($rgb >> 8) & 0xFF;
+						$b = $rgb & 0xFF;
+						//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
+						if(inRangeGreyZone($r,$g,$b)){
+							$talk++;
+						}
+						error_log('grey zone = ' . $talk,0);
 					}
-					error_log('grey zone = ' . $talk,0);
 				}
 
 				if(empty($rgb)){
