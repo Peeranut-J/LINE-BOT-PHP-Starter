@@ -680,11 +680,15 @@ if (!is_null($events['events'])) {
 					$talk = 'empty rgb';
 				}
 				*/
+
+
+				/*
 				if($talk){
 					$talk = 'คาดว่าเป็นโรค กรุณาตรวจกับหมออีกทีครับ';
 				}else {
 					$talk = 'คาดว่าไม่เป็นโรค';
 				}
+				*/
 				$messages = [
 				'type' => 'text',
 				'text' => $talk
