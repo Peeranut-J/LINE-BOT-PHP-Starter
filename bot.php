@@ -482,7 +482,7 @@ if (!is_null($events['events'])) {
 			}
 			$sc = checkSizeCircle($img,$width,$height);
 			$cr = checkCircleRatio($img,$width,$height);
-			$talk = ' grey zone = ' . $talk . ' blood area = ' . $say . ' size of circle = ' . $sc . ' ratio of inner/outer = ' . $cr;
+			$talk = ' grey zone = ' . $talk . ' blood area = ' . $say . ' size of circle(small 30000) = ' . $sc . ' ratio of inner/outer = ' . $cr;
 			/*
 			$width = imagesx($img);
 			$height = imagesy($img);
