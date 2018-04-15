@@ -237,8 +237,9 @@ function checkCircleRatio($img,$width,$height){
 					} else if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
 						break 1;
 					}
-					$countOutM = max($countOutM,$countOut);
+				//	$countOutM = max($countOutM,$countOut);
 				}
+				$countOutM = max($countOutM,$countOut);
 			}
 			if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
 				for($i = $y ;$i<($y+($height/2)) ; $i++){
@@ -265,8 +266,9 @@ function checkCircleRatio($img,$width,$height){
 					} else if(inRangeOuterCircle((int)$r,(int)$g,(int)$b)){
 						break 1;
 					}
-					$countInM = max($countInM,$countIn);
+					//$countInM = max($countInM,$countIn);
 				}
+				$countInM = max($countInM,$countIn);
 			}
 		}
 	}
