@@ -1027,7 +1027,7 @@ if (!is_null($events['events'])) {
 					$ans = 'ปกติ';
 				}
 
-				$talk = $talk . "\n" . 'จากข้อมูลที่ท่านให้มา คาดว่า ' . $ans; . ' ' . $say . ' sc = ' . $sc . ' cr = ' . $cr;
+				$talk = $talk . "\n" . 'จากข้อมูลที่ท่านให้มา คาดว่า ' . $ans;
 
 				//$test_inc = 0;
 				/*
