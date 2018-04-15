@@ -239,6 +239,7 @@ function checkCircleRatio($img,$width,$height){
 					}
 				//	$countOutM = max($countOutM,$countOut);
 				}
+				error_log('loopppp Out',0);
 				$countOutM = max($countOutM,$countOut);
 			}
 			if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
@@ -268,6 +269,7 @@ function checkCircleRatio($img,$width,$height){
 					}
 					//$countInM = max($countInM,$countIn);
 				}
+				error_log('loopppp In',0);
 				$countInM = max($countInM,$countIn);
 			}
 		}
