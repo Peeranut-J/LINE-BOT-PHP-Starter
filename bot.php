@@ -239,7 +239,7 @@ function checkCircleRatio($img,$width,$height){
 					}
 				//	$countOutM = max($countOutM,$countOut);
 				}
-				error_log('loopppp Out',0);
+		//		error_log('loopppp Out',0);
 				$countOutM = max($countOutM,$countOut);
 			}
 			if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
@@ -269,7 +269,7 @@ function checkCircleRatio($img,$width,$height){
 					}
 					//$countInM = max($countInM,$countIn);
 				}
-				error_log('loopppp In',0);
+		//		error_log('loopppp In',0);
 				$countInM = max($countInM,$countIn);
 			}
 		}
@@ -447,13 +447,13 @@ if (!is_null($events['events'])) {
 			fclose($fp);
 
 	//		$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
-	/*
+	
 			$data = getimagesize($ch);
 			$width = $data[0];
 			$height = $data[1];
 			$talk = $width . ' ' . $height;
 			error_log($talk , 0);
-			*/
+			
 
 			error_log('save_to = ' . $save_to,0);
 			$ch = $save_to;
