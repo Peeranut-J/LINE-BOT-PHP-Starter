@@ -195,6 +195,31 @@ function inRangeBloodArea($r,$g,$b){
 	return $tf;
 }
 
+function checkSizeCircle($img,$width,$height){
+	$tf = false;
+	$count = 0;
+	$ratio = 0;
+	for($x = 0; $x < $width; $x++) {
+		for($y = 0; $y < $height; $y++) {
+			// pixel color at (x, y)
+			$rgb = imagecolorat($img, $x, $y);
+			$r = ($rgb >> 16) & 0xFF;
+			$g = ($rgb >> 8) & 0xFF;
+			$b = $rgb & 0xFF;
+			//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
+			if(inRangeInnerCircle((int)$r,(int)$g,(int)$b) || inRangeOuterCircle((int)$r,(int)$g,(int)$b)){
+				$count = $count + 1;
+			}
+		}
+	}
+	$ratio = $height/6;
+	if($count <= $ratio){
+		$tf = true;
+	}
+	//return $tf;
+	return $count;
+}
+
 function checkGreyArea($img,$width,$height){
 	$tf = false;
 	$count = 0;
@@ -666,12 +691,8 @@ if (!is_null($events['events'])) {
 				} else {
 					$say = 'true';
 				}
-				$talk = $talk . ' ' . $say;
-
-
-				if(empty($rgb)){
-					$talk = 'empty rgb';
-				}
+				$sc = checkSizeCircle($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
 								
 				$messages = [
 				'type' => 'text',
@@ -701,7 +722,8 @@ if (!is_null($events['events'])) {
 				} else {
 					$say = 'true';
 				}
-				$talk = $talk . ' ' . $say;
+				$sc = checkSizeCircle($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
 
 				$messages = [
 				'type' => 'text',
@@ -731,7 +753,8 @@ if (!is_null($events['events'])) {
 				} else {
 					$say = 'true';
 				}
-				$talk = $talk . ' ' . $say;
+				$sc = checkSizeCircle($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
 
 				$messages = [
 				'type' => 'text',
@@ -770,7 +793,8 @@ if (!is_null($events['events'])) {
 				} else {
 					$say = 'true';
 				}
-				$talk = $talk . ' ' . $say;
+				$sc = checkSizeCircle($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
 
 				//$test_inc = 0;
 				/*
@@ -840,7 +864,8 @@ if (!is_null($events['events'])) {
 				} else {
 					$say = 'true';
 				}
-				$talk = $talk . ' ' . $say;
+				$sc = checkSizeCircle($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
 
 				$messages = [
 				'type' => 'text',
@@ -870,7 +895,8 @@ if (!is_null($events['events'])) {
 				} else {
 					$say = 'true';
 				}
-				$talk = $talk . ' ' . $say;
+				$sc = checkSizeCircle($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
 
 				$messages = [
 				'type' => 'text',
