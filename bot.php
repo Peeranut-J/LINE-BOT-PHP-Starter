@@ -487,7 +487,7 @@ if (!is_null($events['events'])) {
 			$cr = checkCircleRatio($img,$width,$height);
 			$tfsc = false;
 			$tfcr = false;
-			if($sc >= 30000){
+			if($sc <= 30000){
 				$tfsc = true;
 			}
 			if($cr >= 0.5){
