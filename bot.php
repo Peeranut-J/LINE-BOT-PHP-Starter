@@ -146,7 +146,7 @@ function scaleImageFileToBlob($file) {
 
 function inRangeInnerCircle($r,$g,$b){
 	$tf = false;
-	if($r >= 242 && $r <= 255 && $g >= 150 && $g <= 255 && $b >= 25 && $b <= 117){
+	if($r >= 242 && $r <= 255 && $g >= 170 && $g <= 255 && $b >= 25 && $b <= 117){
 		$tf = true;
 	}
 	return $tf;
@@ -154,7 +154,7 @@ function inRangeInnerCircle($r,$g,$b){
 
 function inRangeOuterCircle($r,$g,$b){
 	$tf = false;
-	if($r >= 200 && $r <= 255 && $g >= 100 && $g < 150 && $b >= 18 && $b <= 80){
+	if($r >= 200 && $r <= 255 && $g >= 100 && $g <= 168 && $b >= 18 && $b <= 80){
 		$tf = true;
 	}
 	return $tf;
