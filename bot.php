@@ -195,10 +195,91 @@ function inRangeBloodArea($r,$g,$b){
 	return $tf;
 }
 
+function checkCircleRatio($img,$width,$height){
+	$tf = false;
+	$countOut = 0;
+	//$countOutDown = 0;
+	$countIn = 0;
+	$ratio = 0;
+	$countBlood = 0;
+	for($y = 0; $y < $height; $y++) {
+		for($x = 0; $x < $width; $x++) {
+			// pixel color at (x, y)
+			$rgb = imagecolorat($img, $x, $y);
+			$r = ($rgb >> 16) & 0xFF;
+			$g = ($rgb >> 8) & 0xFF;
+			$b = $rgb & 0xFF;
+			//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
+			if(inRangeOuterCircle((int)$r,(int)$g,(int)$b)){
+				for($i = $y $i<($y+($height/2)) ; $i++){
+					$rgb = imagecolorat($img, $x, $i);
+					$r = ($rgb >> 16) & 0xFF;
+					$g = ($rgb >> 8) & 0xFF;
+					$b = $rgb & 0xFF;
+					if(inRangeOuterCircle((int)$r,(int)$g,(int)$b)){
+						$countOut = $countOut + 1;
+					} else if(inRangeBloodVessel((int)$r,(int)$g,(int)$b)) {
+						$countBlood = 0;
+						for($i = $y $i<($y + 100)) ; $i++){
+							$rgb = imagecolorat($img, $x, $i);
+							$r = ($rgb >> 16) & 0xFF;
+							$g = ($rgb >> 8) & 0xFF;
+							$b = $rgb & 0xFF;
+							$countBlood = $countBlood + 1;
+						}
+						if($countBlood < 90){
+							$countOut = $countOut + 1;
+						} else{
+							break 1;
+						}
+					} else if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
+						break 1;
+					}
+				}
+			}
+			if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
+				for($i = $y $i<($y+($height/2)) ; $i++){
+					$rgb = imagecolorat($img, $x, $i);
+					$r = ($rgb >> 16) & 0xFF;
+					$g = ($rgb >> 8) & 0xFF;
+					$b = $rgb & 0xFF;
+					if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
+						$countIn = $countIn + 1;
+					} else if(inRangeBloodVessel((int)$r,(int)$g,(int)$b)) {
+						$countBlood = 0;
+						for($i = $y $i<($y + 100)) ; $i++){
+							$rgb = imagecolorat($img, $x, $i);
+							$r = ($rgb >> 16) & 0xFF;
+							$g = ($rgb >> 8) & 0xFF;
+							$b = $rgb & 0xFF;
+							$countBlood = $countBlood + 1;
+						}
+						if($countBlood < 90){
+							$countIn = $countIn + 1;
+						} else{
+							break 1;
+						}
+					} else if(inRangeOuterCircle((int)$r,(int)$g,(int)$b)){
+						break 1;
+					}
+				}
+			}
+		}
+	}
+	$countOuter = 0;
+	$countOuter = $countOut + $countIn;
+	$ratio = $countIn/$countOuter;
+	if($ratio >= 0.5){
+		$tf = true;
+	}
+	//return $tf;
+	return $ratio;
+}
+
 function checkSizeCircle($img,$width,$height){
 	$tf = false;
 	$count = 0;
-	$ratio = 0;
+//	$ratio = 0;
 	for($x = 0; $x < $width; $x++) {
 		for($y = 0; $y < $height; $y++) {
 			// pixel color at (x, y)
@@ -212,8 +293,8 @@ function checkSizeCircle($img,$width,$height){
 			}
 		}
 	}
-	$ratio = $height/6;
-	if($count <= $ratio){
+//	$ratio = $height/6;
+	if($count <= 30000){
 		$tf = true;
 	}
 	//return $tf;
@@ -692,7 +773,8 @@ if (!is_null($events['events'])) {
 					$say = 'true';
 				}
 				$sc = checkSizeCircle($img,$width,$height);
-				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
+				$cr = checkCircleRatio($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc . ' cr = ' . $cr;
 								
 				$messages = [
 				'type' => 'text',
@@ -723,7 +805,8 @@ if (!is_null($events['events'])) {
 					$say = 'true';
 				}
 				$sc = checkSizeCircle($img,$width,$height);
-				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
+				$cr = checkCircleRatio($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc . ' cr = ' . $cr;
 
 				$messages = [
 				'type' => 'text',
@@ -754,7 +837,8 @@ if (!is_null($events['events'])) {
 					$say = 'true';
 				}
 				$sc = checkSizeCircle($img,$width,$height);
-				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
+				$cr = checkCircleRatio($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc . ' cr = ' . $cr;
 
 				$messages = [
 				'type' => 'text',
@@ -794,7 +878,8 @@ if (!is_null($events['events'])) {
 					$say = 'true';
 				}
 				$sc = checkSizeCircle($img,$width,$height);
-				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
+				$cr = checkCircleRatio($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc . ' cr = ' . $cr;
 
 				//$test_inc = 0;
 				/*
@@ -865,7 +950,8 @@ if (!is_null($events['events'])) {
 					$say = 'true';
 				}
 				$sc = checkSizeCircle($img,$width,$height);
-				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
+				$cr = checkCircleRatio($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc . ' cr = ' . $cr;
 
 				$messages = [
 				'type' => 'text',
@@ -896,7 +982,8 @@ if (!is_null($events['events'])) {
 					$say = 'true';
 				}
 				$sc = checkSizeCircle($img,$width,$height);
-				$talk = $talk . ' ' . $say . ' sc = ' . $sc;
+				$cr = checkCircleRatio($img,$width,$height);
+				$talk = $talk . ' ' . $say . ' sc = ' . $sc . ' cr = ' . $cr;
 
 				$messages = [
 				'type' => 'text',
