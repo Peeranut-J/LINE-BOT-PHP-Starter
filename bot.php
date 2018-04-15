@@ -447,19 +447,23 @@ if (!is_null($events['events'])) {
 			fclose($fp);
 
 	//		$urlIm = 'https://image.ibb.co/jNTDNH/normal1.jpg';
-	
+	/*
 			$data = getimagesize($ch);
 			$width = $data[0];
 			$height = $data[1];
 			$talk = $width . ' ' . $height;
 			error_log($talk , 0);
-			
+			*/
 
 			error_log('save_to = ' . $save_to,0);
 			$ch = $save_to;
 
 			$img = imagecreatefromjpeg($ch); // resource id = xxx ;
 			error_log('ch = ' . $ch . 'img = ' . $img, 0);
+
+			$width = imagesx($img);
+			$height = imagesy($img);
+			error_log('w = ' . $width . ' h = ' . $height,0);
 
 	//		$img = imagecreatefromjpeg($urlIm);
 			$talk = 0;
