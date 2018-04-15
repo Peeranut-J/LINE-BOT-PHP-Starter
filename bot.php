@@ -146,7 +146,7 @@ function scaleImageFileToBlob($file) {
 
 function inRangeInnerCircle($r,$g,$b){
 	$tf = false;
-	if($r >= 242 && $r <= 255 && $g >= 130 && $g <= 255 && $b >= 25 && $b <= 117){
+	if($r >= 242 && $r <= 255 && $g >= 150 && $g <= 255 && $b >= 25 && $b <= 117){
 		$tf = true;
 	}
 	return $tf;
