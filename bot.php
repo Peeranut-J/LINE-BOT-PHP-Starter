@@ -485,7 +485,7 @@ if (!is_null($events['events'])) {
 			}
 			$sc = checkSizeCircle($img,$width,$height);
 			$cr = checkCircleRatio($img,$width,$height);
-			$talk = ' grey zone(อาจเกิดจากเงาในรูปที่ส่ง หากมีเงา กรุณาถ่ายใหม่ ขอบคุณครับ) = ' . $talk . "\n" . "\n" . ' blood area = ' . $say . "\n" . "\n" . ' size of circle(small 30000) = ' . $sc . "\n" . "\n" . ' ratio of inner/outer = ' . $cr . "\n";
+			$talk = 'grey zone' . "\n" . '(อาจเกิดจากเงาในรูปที่ส่ง หากมีเงา กรุณาถ่ายใหม่ ขอบคุณครับ)' . "\n" . '*หากมีสีของดวงตาที่ซีด/เทากว่าปกติ ค่านี้อาจจะออกมาเยอะแม้ว่าจะไม่เป็นโรค เพื่อความมั่นใจกรุณาตรวจสอบกับแพทย์ ขอบคุณครับ ' . "\n" . ' = ' . $talk . "\n" . "\n" . ' blood area = ' . $say . "\n" . "\n" . ' size of circle(small 30000) = ' . $sc . "\n" . "\n" . ' ratio of inner/outer = ' . $cr . "\n";
 			/*
 			$width = imagesx($img);
 			$height = imagesy($img);
