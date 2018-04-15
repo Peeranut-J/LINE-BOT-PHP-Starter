@@ -461,9 +461,28 @@ if (!is_null($events['events'])) {
 			$img = imagecreatefromjpeg($ch); // resource id = xxx ;
 			error_log('ch = ' . $ch . 'img = ' . $img, 0);
 
+	//		$img = imagecreatefromjpeg($urlIm);
+			$talk = 0;
+			$tfg = checkGreyArea($img,$width,$height);
+			$talk = $tfg;
+
+			$tf = false;
+			if($talk >= 30769){
+				$tf = true;
+			}
+			$ba = checkBloodArea($img,$width,$height);
+			if(!$ba){
+				$say = 'false';
+			} else {
+				$say = 'true';
+			}
+			$sc = checkSizeCircle($img,$width,$height);
+			$cr = checkCircleRatio($img,$width,$height);
+			$talk = ' grey zone = ' . $talk . ' blood area = ' . $say . ' size of circle = ' . $sc . ' ratio of inner/outer = ' . $cr;
+			/*
 			$width = imagesx($img);
 			$height = imagesy($img);
-			error_log('w = ' . $width . ' h = ' . $height,0);
+			error_log('w = ' . $width . ' h = ' . $height,0);*/
 			/*
 			for($x = 0; $x < $width; $x++) {
 				for($y = 0; $y < $height; $y++) {
@@ -474,19 +493,19 @@ if (!is_null($events['events'])) {
 					$b = $rgb & 0xFF;
 					error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
 				}
-			}*/
+			}*//*
 			$rgb = imagecolorat($img, 800, 608);
 			$r = ($rgb >> 16) & 0xFF;
 			$g = ($rgb >> 8) & 0xFF;
 			$b = $rgb & 0xFF;
 			error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
-
+			*/
 			//for all function
 
 	//		error_log("img + urlIm + rescode" , 0);
 	//		error_log('ch = ' . $ch , 0);
 			//error_log("space" , 0);
-			error_log('url = ' . $urlIm , 0);
+	//		error_log('url = ' . $urlIm , 0);
 			//error_log($ch , 0);
 			//error_log($rescode , 0);
 
