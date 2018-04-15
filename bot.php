@@ -473,9 +473,9 @@ if (!is_null($events['events'])) {
 			$tfg = checkGreyArea($img,$width,$height);
 			$talk = $tfg;
 
-			$tf = false;
-			if($talk >= 30769){
-				$tf = true;
+			$tfg = false;
+			if($talk >= 30000){
+				$tfg = true;
 			}
 			$ba = checkBloodArea($img,$width,$height);
 			if(!$ba){
@@ -485,7 +485,24 @@ if (!is_null($events['events'])) {
 			}
 			$sc = checkSizeCircle($img,$width,$height);
 			$cr = checkCircleRatio($img,$width,$height);
+			$tfsc = false;
+			$tfcr = false;
+			if($sc >= 30000){
+				$tfsc = true;
+			}
+			if($cr >= 0.5){
+				$tfcr = true;
+			}
 			$talk = 'grey zone' . "\n" . '(อาจเกิดจากเงาในรูปที่ส่ง หากมีเงา กรุณาถ่ายใหม่ ขอบคุณครับ)' . "\n" . '*หากมีสีของดวงตาที่ซีด/เทากว่าปกติ ค่านี้อาจจะออกมาเยอะแม้ว่าจะไม่เป็นโรค เพื่อความมั่นใจกรุณาตรวจสอบกับแพทย์ ขอบคุณครับ' . "\n" . '**หากมากกว่า 30000 มีโอกาสเป็นโรค ครับ' . "\n" . ' = ' . $talk . "\n" . "\n" . 'blood area = ' . $say . "\n" . 'หากมีเลือดออกในดวงตา มักจะเป็นโรคต้อหินครับ' . "\n" . "\n" . 'size of circle(small 30000) = ' . $sc . "\n" . 'หากมีขนาดเล็ก(น้อยกว่า 30000) จะมีโอกาสเป็นโรคครับ' . "\n" . "\n" . 'ratio of inner/outer = ' . $cr . "\n" . 'หากมากกว่าหรือเท่ากับ 0.5 จะมีโอกาสเป็นโรคครับ';
+			
+			if($tfg || $ba || $tfsc || $tfcr){
+				$ans = 'มีโอกาสเป็นโรค';
+			}else{
+				$ans = 'ปกติ';
+			}
+
+			$talk = $talk . "\n" . 'จากข้อมูลที่ท่านให้มา คาดว่า ' . $ans;
+
 			/*
 			$width = imagesx($img);
 			$height = imagesy($img);
