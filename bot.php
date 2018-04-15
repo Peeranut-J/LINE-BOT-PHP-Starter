@@ -442,8 +442,8 @@ if (!is_null($events['events'])) {
 			echo curl_error($ch);
 			curl_close ($ch);
 			$save_to = ' ';
-			if(file_exists($saveto)){
-				unlink($saveto);
+			if(file_exists($save_to)){
+				unlink($save_to);
 			}
 			$fp = fopen($save_to,'x');
 			fwrite($fp, $raw);
