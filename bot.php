@@ -198,8 +198,10 @@ function inRangeBloodArea($r,$g,$b){
 function checkCircleRatio($img,$width,$height){
 	$tf = false;
 	$countOut = 0;
+	$countOutM = 0;
 	//$countOutDown = 0;
 	$countIn = 0;
+	$countInM = 0;
 	$ratio = 0;
 	$countBlood = 0;
 	for($y = 0; $y < $height; $y++) {
@@ -235,6 +237,7 @@ function checkCircleRatio($img,$width,$height){
 					} else if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
 						break 1;
 					}
+					$countOutM = max($countOutM,$countOut);
 				}
 			}
 			if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
@@ -262,13 +265,14 @@ function checkCircleRatio($img,$width,$height){
 					} else if(inRangeOuterCircle((int)$r,(int)$g,(int)$b)){
 						break 1;
 					}
+					$countInM = max($countInM,$countIn);
 				}
 			}
 		}
 	}
 	$countOuter = 0;
-	$countOuter = $countOut + $countIn;
-	$ratio = $countIn/$countOuter;
+	$countOuter = $countOutM + $countInM;
+	$ratio = $countInM/$countOuter;
 	if($ratio >= 0.5){
 		$tf = true;
 	}
