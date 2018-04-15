@@ -482,7 +482,7 @@ if (!is_null($events['events'])) {
 			}
 			$sc = checkSizeCircle($img,$width,$height);
 			$cr = checkCircleRatio($img,$width,$height);
-			$talk = ' grey zone = ' . $talk . "\n" . ' blood area = ' . $say . "\n" . ' size of circle(small 30000) = ' . $sc . "\n" . ' ratio of inner/outer = ' . $cr . "\n" .;
+			$talk = ' grey zone(อนึ่ง อาจเกิดจากเงาในรูปที่ส่ง หากมีเงา กรุณาถ่ายใหม่ ขอบคุณครับ) = ' . $talk . "\n" . ' blood area = ' . $say . "\n" . ' size of circle(small 30000) = ' . $sc . "\n" . ' ratio of inner/outer = ' . $cr . "\n";
 			/*
 			$width = imagesx($img);
 			$height = imagesy($img);
