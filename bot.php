@@ -211,7 +211,7 @@ function checkCircleRatio($img,$width,$height){
 			$b = $rgb & 0xFF;
 			//error_log('r g b = ' . $r . ' ' . $g . ' ' . $b . ' rgb = ' . $rgb, 0);
 			if(inRangeOuterCircle((int)$r,(int)$g,(int)$b)){
-				for($i = $y $i<($y+($height/2)) ; $i++){
+				for($i = $y; $i<($y+($height/2)) ; $i++){
 					$rgb = imagecolorat($img, $x, $i);
 					$r = ($rgb >> 16) & 0xFF;
 					$g = ($rgb >> 8) & 0xFF;
@@ -238,7 +238,7 @@ function checkCircleRatio($img,$width,$height){
 				}
 			}
 			if(inRangeInnerCircle((int)$r,(int)$g,(int)$b)){
-				for($i = $y $i<($y+($height/2)) ; $i++){
+				for($i = $y ;$i<($y+($height/2)) ; $i++){
 					$rgb = imagecolorat($img, $x, $i);
 					$r = ($rgb >> 16) & 0xFF;
 					$g = ($rgb >> 8) & 0xFF;
