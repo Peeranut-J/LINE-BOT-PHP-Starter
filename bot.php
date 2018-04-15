@@ -220,7 +220,7 @@ function checkCircleRatio($img,$width,$height){
 						$countOut = $countOut + 1;
 					} else if(inRangeBloodVessel((int)$r,(int)$g,(int)$b)) {
 						$countBlood = 0;
-						for($i = $y; $i<($y + 100)) ; $i++){
+						for($i = $y; $i<($y + 100) ; $i++){
 							$rgb = imagecolorat($img, $x, $i);
 							$r = ($rgb >> 16) & 0xFF;
 							$g = ($rgb >> 8) & 0xFF;
@@ -247,7 +247,7 @@ function checkCircleRatio($img,$width,$height){
 						$countIn = $countIn + 1;
 					} else if(inRangeBloodVessel((int)$r,(int)$g,(int)$b)) {
 						$countBlood = 0;
-						for($i = $y; $i<($y + 100)) ; $i++){
+						for($i = $y; $i<($y + 100) ; $i++){
 							$rgb = imagecolorat($img, $x, $i);
 							$r = ($rgb >> 16) & 0xFF;
 							$g = ($rgb >> 8) & 0xFF;
